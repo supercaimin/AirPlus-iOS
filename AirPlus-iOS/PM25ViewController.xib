@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9531"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PM25ViewController">
+            <connections>
+                <outlet property="animatedImagesView" destination="Ski-5U-Bbz" id="eFq-ex-pFA"/>
+                <outlet property="view" destination="iN0-l3-epB" id="Jm8-NL-zxj"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ski-5U-Bbz" customClass="JSAnimatedImagesView">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="Ski-5U-Bbz" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Khy-fE-98W"/>
+                <constraint firstAttribute="bottom" secondItem="Ski-5U-Bbz" secondAttribute="bottom" id="dfD-q7-Vd9"/>
+                <constraint firstItem="Ski-5U-Bbz" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="v1x-uN-YUc"/>
+                <constraint firstAttribute="trailing" secondItem="Ski-5U-Bbz" secondAttribute="trailing" id="yQY-es-TrB"/>
+            </constraints>
+            <point key="canvasLocation" x="424" y="258"/>
+        </view>
+    </objects>
+</document>
