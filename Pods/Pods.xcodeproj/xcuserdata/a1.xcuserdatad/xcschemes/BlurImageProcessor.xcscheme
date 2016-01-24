@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '048888EED1687D93A44C9381'
+               BlueprintIdentifier = '2917BEDC0AA65650221D391C'
                BlueprintName = 'BlurImageProcessor'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libBlurImageProcessor.a'>

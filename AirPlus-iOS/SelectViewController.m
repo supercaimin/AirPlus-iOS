@@ -56,11 +56,12 @@ static NSString * const FUITableViewControllerCellReuseIdentifier = @"FUITableVi
     
     [self.tableView reloadData];
     
-    self.citys = @[@"Beijing", @"Shanghai", @"Nanjing", @"Chengdu", @"GuangZhou"];
+    self.citys = @[@"Nanjing"];
     
-    self.schools = @[@"CUMT", @"MMT", @"AAA School", @"BBB School", @"CCC School"];
+    self.schools = @[@"Nanjing International School"];
     
-    self.devices = @[@"Device1", @"Device1", @"Device1", @"Device1", @"Device1"];
+    self.devices = @[@"NIS Design Center", @"EtonHouse", @"NIS Gym", @"ABCCDDD"];
+    
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -105,7 +106,18 @@ static NSString * const FUITableViewControllerCellReuseIdentifier = @"FUITableVi
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 5;
+    if (self.level == APSelectCityLevel) {
+        return self.citys.count;
+    }
+    
+    if (self.level == APSelectLocationLevel) {
+        return self.devices.count;
+    }
+    
+    if (self.level == APSelectSchoolLevel) {
+        return self.schools.count;
+    }
+    return 0;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -137,7 +149,7 @@ static NSString * const FUITableViewControllerCellReuseIdentifier = @"FUITableVi
     }else{
  
         
-        if(indexPath.section % 2 == 0 ){
+        if(indexPath.section == 3 ){
             cell.textLabel.text = [self.devices objectAtIndex:indexPath.section];
             cell.textLabel.textColor = [UIColor darkGrayColor];
         }else{

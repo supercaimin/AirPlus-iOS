@@ -32,6 +32,12 @@
 
 @property (strong, nonatomic) UITableView *tableView;
 
+@property (nonatomic, strong) NSArray *schools;
+@property (nonatomic, strong) NSArray *devices;
+@property (nonatomic, strong) NSArray *serials;
+@property (nonatomic, strong) NSMutableArray *pms;
+
+
 @end
 
 @implementation MainViewController
@@ -62,10 +68,51 @@
     
     [self showTutorialView];
     
-    [self.tableView reloadData];
-
+    self.schools = @[@"Nanjing International School"];
+    
+    self.devices = @[@"NIS Design Center", @"EtonHouse", @"NIS Gym"];
+    self.serials = @[@"IPM251508016", @"IPM251508022", @"IPM251514006"];
+    
+    
+    [AFHttpTool login:^(AFHttpResult *response) {
+        [self performSelector:@selector(sysdata) withObject:nil afterDelay:1.0];
+    } failure:^(NSError *err, NSString *responseString) {
+        [self performSelector:@selector(sysdata) withObject:nil afterDelay:1.0];
+    }];
 
 }
+
+- (void) sysdata
+{
+    NSMutableArray *ipms1 = [NSMutableArray array];
+    NSMutableArray *ipms2 = [NSMutableArray array];
+    NSMutableArray *ipms3 = [NSMutableArray array];
+    self.pms = [NSMutableArray array];
+    
+    [AFHttpTool syncdata:^(AFHttpResult *response) {
+        for (NSDictionary *pm in response.jsonObject) {
+            if ([[pm objectForKey:@"serial"] isEqualToString:@"IPM251508016"]) {
+                [ipms1 addObject:pm];
+            }
+            if ([[pm objectForKey:@"serial"] isEqualToString:@"IPM251508022"]) {
+                [ipms2 addObject:pm];
+            }
+            if ([[pm objectForKey:@"serial"] isEqualToString:@"IPM251514006"]) {
+                [ipms3 addObject:pm];
+            }
+            
+        }
+        [self.pms addObject:ipms1];
+        [self.pms addObject:ipms2];
+        [self.pms addObject:ipms3];
+
+        [self.tableView reloadData];
+    } failure:^(NSError *err, NSString *responseString) {
+        [self.tableView reloadData];
+
+    }];
+}
+
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -225,7 +272,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 10;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -246,10 +293,12 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UIRectCorner corners = 0;
-    UITableViewCell *cell = [PMItemCell PMItemCellWithTableView:tableView];
+    PMItemCell *cell = [PMItemCell PMItemCellWithTableView:tableView];
     [cell configureFlatCellWithColor:[UIColor cloudsColor]
                        selectedColor:[UIColor greenSeaColor]
                      roundingCorners:corners];
+    
+    [cell configureWithData:[[self.pms objectAtIndex:indexPath.section] lastObject] location:[self.devices objectAtIndex:indexPath.section] school:[self.schools objectAtIndex:0]];
     
     cell.cornerRadius = 0.f; //Optional
     cell.separatorHeight = 2.f;
@@ -265,6 +314,9 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     PM25ViewController *pVc = [[PM25ViewController alloc] init];
+    pVc.title = [self.devices objectAtIndex:indexPath.section];
+    pVc.pms = [self.pms objectAtIndex:indexPath.section];
+    
     [self.navigationController pushViewController:pVc animated:YES];
     
 }

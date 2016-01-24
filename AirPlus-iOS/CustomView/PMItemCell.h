@@ -12,4 +12,8 @@
 
 + (PMItemCell *) PMItemCellWithTableView:(UITableView *)tableView;
 
+- (void) configureWithData:(NSDictionary *) pm
+                    location:(NSString *)location
+                    school:(NSString *)school;
+
 @end

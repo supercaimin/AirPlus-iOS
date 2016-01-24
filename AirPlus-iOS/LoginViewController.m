@@ -66,6 +66,8 @@
     [self.loginButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateNormal];
     [self.loginButton addTarget:self action:@selector(loginButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     
+
+    
 }
 
 - (void)back:(id)sender

@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '7D6C099776561F02E70FBFB3'
+               BlueprintIdentifier = '9287887BEC1671BB61FA689E'
                BlueprintName = 'UIImage+RTTint'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libUIImage+RTTint.a'>

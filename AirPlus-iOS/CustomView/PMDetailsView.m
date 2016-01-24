@@ -16,9 +16,6 @@
 
 @property (nonatomic, weak) IBOutlet GKLineGraph *graph;
 
-@property (nonatomic, strong) NSArray *data;
-@property (nonatomic, strong) NSArray *labels;
-
 
 @property (weak, nonatomic) IBOutlet UILabel *pmValueLabel;
 
@@ -44,6 +41,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *unit2Label;
 
 @property (weak, nonatomic) IBOutlet UILabel *statusLabel;
+
+@property (strong, nonatomic) NSArray *pms;
+@property (strong, nonatomic) NSArray *pm25s;
 
 @end
 
@@ -76,81 +76,94 @@
     self.unit2Label.font = [UIFont flatFontOfSize:10.0];
     self.statusLabel.layer.cornerRadius = 2.0;
     self.statusLabel.layer.masksToBounds = YES;
+    
+    [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(reset) userInfo:nil repeats:YES];
 
 }
 
-- (void)load
+- (void) loadWithData:(NSArray *) datas outPM25s:(NSArray *)outPM25s
 {
+    self.pmValueLabel.text = [[datas lastObject] objectForKey:@"reading"];
+    self.outdoorPMLabel.text = [outPM25s lastObject];
+    float x = [[outPM25s lastObject] floatValue] / [[[datas lastObject] objectForKey:@"reading"] floatValue];
+    self.xLabel.text = [NSString stringWithFormat:@"%.1fx", x];
+    
+    NSString *displayStatus = [[datas lastObject] objectForKey:@"displayStatus"];
+    if ([displayStatus isEqualToString:@"orange"]) {
+        self.statusLabel.backgroundColor = [UIColor orangeColor];
+    }
+    if ([displayStatus isEqualToString:@"yellow"]) {
+        self.statusLabel.backgroundColor = [UIColor yellowColor];
+    }
+    if ([displayStatus isEqualToString:@"green"]) {
+        self.statusLabel.backgroundColor = [UIColor greenSeaColor];
+    }
+    if ([displayStatus isEqualToString:@"red"]) {
+        self.statusLabel.backgroundColor = [UIColor redColor];
+    }
+    if ([displayStatus isEqualToString:@"purple"]) {
+        self.statusLabel.backgroundColor = [UIColor purpleColor];
+    }
+    if ([displayStatus isEqualToString:@"maroon"]) {
+        self.statusLabel.backgroundColor = [UIColor magentaColor];
+    }
+    
+    
+    int xx = [self.pmValueLabel.text integerValue];
+    
+    if (xx > 200) {
+        self.statusLabel.text = @"BAD";
+        self.statusLabel.backgroundColor = [UIColor redColor];
+    }else if(xx > 100){
+        self.statusLabel.text = @"FAIR";
+        self.statusLabel.backgroundColor = [UIColor orangeColor];
+    }else{
+        self.statusLabel.text = @"GOOD";
+        self.statusLabel.backgroundColor = [UIColor greenSeaColor];
+    }
+    [self parse24hIndoor:datas];
+    self.pm25s = outPM25s;
     [self _setupExampleGraph];
+}
+
+- (void) parse24hIndoor:(NSArray *)datas
+{
+    NSMutableArray *hours = [[NSMutableArray alloc] init];
+    NSMutableArray *pms = [[NSMutableArray alloc] init];
+    [datas enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSDictionary *dict = obj;
+        NSString *date = [dict objectForKey:@"readingDate"];
+        NSString *hour = [date substringWithRange:NSMakeRange(11, 2)];
+        if (![[hours lastObject] isEqualToString:hour]) {
+            [hours addObject:hour];
+            [pms addObject:[dict objectForKey:@"reading"]];
+        }
+        if (hours.count == 24) {
+            *stop = YES;
+        }
+    }];
+    
+    self.pms = pms;
 }
 - (void)_setupExampleGraph {
     
     self.graph.backgroundColor = [UIColor cloudsColor];
     
-    self.data = @[
-                  @[@20, @40, @20, @60, @40, @140, @80],
-                  @[@120, @150, @80, @120, @140, @100, @0],
-                  //                  @[@620, @650, @580, @620, @540, @400, @0]
-                  ];
-    
-    self.labels = @[@"12:00", @"13:00", @"14:00", @"15:00", @"16:00", @"17:00", @"18:00"];
-    
     self.graph.dataSource = self;
     self.graph.lineWidth = 1.0;
     
-    self.graph.valueLabelCount = 6;
+    self.graph.startFromZero = YES;
+    
+    self.graph.valueLabelCount = 8;
     
     [self.graph draw];
 }
 
-- (void)_setupTestingGraphLow {
-    
-    /*
-     A custom max and min values can be achieved by adding
-     values for another line and setting its color to clear.
-     */
-    
-    self.data = @[
-                  @[@10, @4, @8, @2, @9, @3, @6],
-                  @[@1, @2, @3, @4, @5, @6, @10]
-                  ];
-    //    self.data = @[
-    //                  @[@2, @2, @2, @2, @2, @2, @6],
-    //                  @[@1, @1, @1, @1, @1, @1, @1]
-    //                  ];
-    
-    self.labels = @[@"12:00", @"13:00", @"14:00", @"15:00", @"16:00", @"17:00", @"18:00"];
-    
-    self.graph.dataSource = self;
-    self.graph.lineWidth = 1.0;
-    
-    //    self.graph.startFromZero = YES;
-    self.graph.valueLabelCount = 10;
-    
-    [self.graph draw];
-}
-
-- (void)_setupTestingGraphHigh {
-    
-    self.data = @[
-                  @[@1000, @2000, @3000, @4000, @5000, @6000, @10000]
-                  ];
-    
-    self.labels = @[@"2001", @"2002", @"2003", @"2004", @"2005", @"2006", @"2007"];
-    
-    self.graph.dataSource = self;
-    self.graph.lineWidth = 3.0;
-    
-    //    self.graph.startFromZero = YES;
-    self.graph.valueLabelCount = 10;
-    
-    [self.graph draw];
-}
 
 #pragma mark - GKLineGraphDataSource
 
 - (NSInteger)numberOfLines {
-    return [self.data count];
+    return 2;
 }
 
 - (UIColor *)colorForLineAtIndex:(NSInteger)index {
@@ -161,7 +174,10 @@
 }
 
 - (NSArray *)valuesForLineAtIndex:(NSInteger)index {
-    return [self.data objectAtIndex:index];
+    if (index == 0) {
+        return self.pm25s;
+    }
+    return self.pms;
 }
 
 - (CFTimeInterval)animationDurationForLineAtIndex:(NSInteger)index {
@@ -169,19 +185,14 @@
 }
 
 - (NSString *)titleForLineAtIndex:(NSInteger)index {
-    return [self.labels objectAtIndex:index];
+    return @".";
 }
 
 
-- (IBAction)draw:(id)sender {
+- (void)reset {
     
     [self.graph reset];
     [self.graph draw];
 }
 
-- (IBAction)reset:(id)sender {
-    
-    [self.graph reset];
-
-}
 @end

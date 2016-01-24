@@ -113,7 +113,9 @@ static CGFloat kAxisMargin = 50.0;
 
 - (void)_removeTitleLabels {
     [self.titleLabels mk_each:^(id item) {
-        [item removeFromSuperview];
+        if (item) {
+            //[item removeFromSuperview];
+        }
     }];
     self.titleLabels = nil;
 }
@@ -201,7 +203,7 @@ static CGFloat kAxisMargin = 50.0;
 
 - (void)_removeValueLabels {
     [self.valueLabels mk_each:^(id item) {
-        [item removeFromSuperview];
+       // [item removeFromSuperview];
     }];
     self.valueLabels = nil;
 }

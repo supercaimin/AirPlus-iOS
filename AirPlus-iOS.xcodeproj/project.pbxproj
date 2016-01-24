@@ -42,6 +42,8 @@
 		630470AB1C48DDD50064D81C /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 630470AA1C48DDD50064D81C /* LoginViewController.xib */; };
 		630470AE1C48EE170064D81C /* SelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 630470AD1C48EE170064D81C /* SelectViewController.m */; };
 		630470B11C48F2500064D81C /* UITableViewCell+FlatUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 630470B01C48F2500064D81C /* UITableViewCell+FlatUI.m */; };
+		6312F4881C54B2E70021C959 /* AFHttpResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 6312F4851C54B2E70021C959 /* AFHttpResult.m */; };
+		6312F4891C54B2E70021C959 /* AFHttpTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 6312F4871C54B2E70021C959 /* AFHttpTool.m */; };
 		63B8D6311C4B9BEB005B5AF6 /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63B8D6301C4B9BEB005B5AF6 /* RegisterViewController.xib */; };
 		63B8D6351C4BA1AC005B5AF6 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63B8D6331C4BA1AC005B5AF6 /* AboutViewController.m */; };
 		63B8D6361C4BA1AC005B5AF6 /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63B8D6341C4BA1AC005B5AF6 /* AboutViewController.xib */; };
@@ -106,6 +108,10 @@
 		630470AD1C48EE170064D81C /* SelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectViewController.m; sourceTree = "<group>"; };
 		630470AF1C48F2500064D81C /* UITableViewCell+FlatUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableViewCell+FlatUI.h"; sourceTree = "<group>"; };
 		630470B01C48F2500064D81C /* UITableViewCell+FlatUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewCell+FlatUI.m"; sourceTree = "<group>"; };
+		6312F4841C54B2E70021C959 /* AFHttpResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHttpResult.h; sourceTree = "<group>"; };
+		6312F4851C54B2E70021C959 /* AFHttpResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHttpResult.m; sourceTree = "<group>"; };
+		6312F4861C54B2E70021C959 /* AFHttpTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHttpTool.h; sourceTree = "<group>"; };
+		6312F4871C54B2E70021C959 /* AFHttpTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHttpTool.m; sourceTree = "<group>"; };
 		63B8D6301C4B9BEB005B5AF6 /* RegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
 		63B8D6321C4BA1AC005B5AF6 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
 		63B8D6331C4BA1AC005B5AF6 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
@@ -169,6 +175,7 @@
 		630470471C4881690064D81C /* AirPlus-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				6312F4801C54B1520021C959 /* Model */,
 				63B8D63F1C4BC5DE005B5AF6 /* CustomView */,
 				630470951C48B39C0064D81C /* Vendor */,
 				630470611C4895D90064D81C /* Utilitys */,
@@ -269,6 +276,17 @@
 			path = Libraries;
 			sourceTree = "<group>";
 		};
+		6312F4801C54B1520021C959 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				6312F4841C54B2E70021C959 /* AFHttpResult.h */,
+				6312F4851C54B2E70021C959 /* AFHttpResult.m */,
+				6312F4861C54B2E70021C959 /* AFHttpTool.h */,
+				6312F4871C54B2E70021C959 /* AFHttpTool.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		63B8D6371C4BB43A005B5AF6 /* RNFrostedSidebar */ = {
 			isa = PBXGroup;
 			children = (
@@ -335,6 +353,7 @@
 				TargetAttributes = {
 					630470441C4881690064D81C = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = M8443SG6MX;
 					};
 				};
 			};
@@ -455,10 +474,12 @@
 				63B8D6431C4BC60C005B5AF6 /* PMItemCell.m in Sources */,
 				6304704D1C4881690064D81C /* AppDelegate.m in Sources */,
 				630470A01C48B39C0064D81C /* ICETutorialStyle.m in Sources */,
+				6312F4891C54B2E70021C959 /* AFHttpTool.m in Sources */,
 				630470AE1C48EE170064D81C /* SelectViewController.m in Sources */,
 				6304709F1C48B39C0064D81C /* ICETutorialPage.m in Sources */,
 				630470A91C48BB290064D81C /* RegisterViewController.m in Sources */,
 				630470A31C48BAE50064D81C /* LoginViewController.m in Sources */,
+				6312F4881C54B2E70021C959 /* AFHttpResult.m in Sources */,
 				6304709E1C48B39C0064D81C /* ICETutorialController.m in Sources */,
 				63B8D63D1C4BB43A005B5AF6 /* README.md in Sources */,
 				63B8D63E1C4BB43A005B5AF6 /* RNFrostedSidebar.m in Sources */,
@@ -556,11 +577,14 @@
 			baseConfigurationReference = 92E6B2C2D7DBEBEF485BBEC3 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "AirPlus-iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "net.appbees.AirPlus-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "f95ee0c2-d4bc-4cc9-9978-56211aa77c16";
 			};
 			name = Debug;
 		};
@@ -569,11 +593,14 @@
 			baseConfigurationReference = 43ACB4255EB7601F86FAAF56 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "AirPlus-iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "net.appbees.AirPlus-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "f95ee0c2-d4bc-4cc9-9978-56211aa77c16";
 			};
 			name = Release;
 		};

@@ -11,5 +11,6 @@
 @interface PMDetailsView : UIView
 + (id) instancePMDetailsView;
 
-- (void) load;
+- (void) loadWithData:(NSArray *) datas outPM25s:(NSArray *)outPM25s;
+
 @end

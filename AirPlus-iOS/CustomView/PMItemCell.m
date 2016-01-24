@@ -72,5 +72,48 @@
 
     // Configure the view for the selected state
 }
+- (void) configureWithData:(NSDictionary *) pm
+                  location:(NSString *)location
+                    school:(NSString *)school;
+{
+    self.deviceLabel.text = location;
+    self.locationLabel.text = school;
+    self.timeLabel.text = [pm objectForKey:@"readingDate"];
+    self.valueLabel.text = [pm objectForKey:@"reading"];
+    
+    NSString *displayStatus = [pm objectForKey:@"displayStatus"];
+    if ([displayStatus isEqualToString:@"orange"]) {
+        self.gradeLabel.backgroundColor = [UIColor orangeColor];
+    }
+    if ([displayStatus isEqualToString:@"yellow"]) {
+        self.gradeLabel.backgroundColor = [UIColor yellowColor];
+    }
+    if ([displayStatus isEqualToString:@"green"]) {
+        self.gradeLabel.backgroundColor = [UIColor greenSeaColor];
+    }
+    if ([displayStatus isEqualToString:@"red"]) {
+        self.gradeLabel.backgroundColor = [UIColor redColor];
+    }
+    if ([displayStatus isEqualToString:@"purple"]) {
+        self.gradeLabel.backgroundColor = [UIColor purpleColor];
+    }
+    if ([displayStatus isEqualToString:@"maroon"]) {
+        self.gradeLabel.backgroundColor = [UIColor magentaColor];
+    }
+    
+    
+    int x = [self.valueLabel.text integerValue];
+    
+    if (x > 200) {
+        self.gradeLabel.text = @"BAD";
+        self.gradeLabel.backgroundColor = [UIColor redColor];
+    }else if(x > 100){
+        self.gradeLabel.text = @"FAIR";
+        self.gradeLabel.backgroundColor = [UIColor orangeColor];
+    }else{
+        self.gradeLabel.text = @"GOOD";
+        self.gradeLabel.backgroundColor = [UIColor greenSeaColor];
+    }
 
+}
 @end

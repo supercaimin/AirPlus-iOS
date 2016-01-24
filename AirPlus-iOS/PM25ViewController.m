@@ -21,13 +21,14 @@
 
 @property (strong, nonatomic) PMDetailsView *pmContentView;
 
+@property (strong, nonatomic) NSArray *outPM25s;
+
 @end
 
 @implementation PM25ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"AirAssureGPRSTest";
     
     self.view.backgroundColor = [UIColor cloudsColor];
     
@@ -59,8 +60,43 @@
     [self.view addSubview:buttomToolbar];
     
     [self.scrollView addSubview:self.pmContentView];
+    
+    [AFHttpTool getOutdoorData:^(AFHttpResult *response) {
+
+    } failure:^(NSError *err, NSString *responseString) {
+        int count = 0;
+        for (int i = 0; i < responseString.length; i++) {
+            char c = [responseString characterAtIndex:i];
+            
+            if (c == 'd') {
+                NSString *mark = [responseString substringWithRange:NSMakeRange(i, 6)];
+                if([mark isEqualToString:@"data:["]){
+                    if (count < 1) {
+                        count ++;
+                        continue;
+                    }
+                    int j = i;
+                    while ([responseString characterAtIndex:j] != ']') {
+                        j ++;
+                    }
+                    
+                    NSString *pm25Str = [responseString substringWithRange:NSMakeRange(i+6, j - i - 6)];
+                    self.outPM25s = [pm25Str componentsSeparatedByString:@","];
+
+                    
+                    break;
+                }
+            }
+            
+        }
+        [self.pmContentView loadWithData:self.pms outPM25s:self.outPM25s];
+
+    }];
+
+
 
 }
+
 
 
 - (void)viewWillAppear:(BOOL)animated
@@ -107,7 +143,6 @@
         _pmContentView = [PMDetailsView instancePMDetailsView];
         _pmContentView.frame = CGRectMake(0, 300, SCREEN_WIDTH, SCREEN_HEIGHT - 64 - 44);
         _pmContentView.backgroundColor = RGBA(0xec, 0xf0, 0xf1, 0.8);
-        [_pmContentView load];
     }
     return _pmContentView;
 }

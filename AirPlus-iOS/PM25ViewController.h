@@ -10,4 +10,6 @@
 
 @interface PM25ViewController : UIViewController
 
+@property (nonatomic, strong) NSArray *pms;
+
 @end
