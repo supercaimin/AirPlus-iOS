@@ -33,7 +33,6 @@
 		630470911C48B1120064D81C /* tutorial_background_01@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 630470881C48B1120064D81C /* tutorial_background_01@2x.jpg */; };
 		630470921C48B1120064D81C /* tutorial_background_02@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 630470891C48B1120064D81C /* tutorial_background_02@2x.jpg */; };
 		630470931C48B1120064D81C /* tutorial_background_03@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6304708A1C48B1120064D81C /* tutorial_background_03@2x.jpg */; };
-		630470941C48B1120064D81C /* tutorial_background_04@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6304708B1C48B1120064D81C /* tutorial_background_04@2x.jpg */; };
 		6304709E1C48B39C0064D81C /* ICETutorialController.m in Sources */ = {isa = PBXBuildFile; fileRef = 630470991C48B39C0064D81C /* ICETutorialController.m */; };
 		6304709F1C48B39C0064D81C /* ICETutorialPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 6304709B1C48B39C0064D81C /* ICETutorialPage.m */; };
 		630470A01C48B39C0064D81C /* ICETutorialStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 6304709D1C48B39C0064D81C /* ICETutorialStyle.m */; };
@@ -92,7 +91,6 @@
 		630470881C48B1120064D81C /* tutorial_background_01@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "tutorial_background_01@2x.jpg"; sourceTree = "<group>"; };
 		630470891C48B1120064D81C /* tutorial_background_02@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "tutorial_background_02@2x.jpg"; sourceTree = "<group>"; };
 		6304708A1C48B1120064D81C /* tutorial_background_03@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "tutorial_background_03@2x.jpg"; sourceTree = "<group>"; };
-		6304708B1C48B1120064D81C /* tutorial_background_04@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "tutorial_background_04@2x.jpg"; sourceTree = "<group>"; };
 		630470981C48B39C0064D81C /* ICETutorialController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICETutorialController.h; sourceTree = "<group>"; };
 		630470991C48B39C0064D81C /* ICETutorialController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICETutorialController.m; sourceTree = "<group>"; };
 		6304709A1C48B39C0064D81C /* ICETutorialPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICETutorialPage.h; sourceTree = "<group>"; };
@@ -215,7 +213,6 @@
 				630470881C48B1120064D81C /* tutorial_background_01@2x.jpg */,
 				630470891C48B1120064D81C /* tutorial_background_02@2x.jpg */,
 				6304708A1C48B1120064D81C /* tutorial_background_03@2x.jpg */,
-				6304708B1C48B1120064D81C /* tutorial_background_04@2x.jpg */,
 				630470631C489D1C0064D81C /* burger.png */,
 				630470641C489D1C0064D81C /* burger@2x.png */,
 				630470651C489D1C0064D81C /* Default-568h@2x.png */,
@@ -398,7 +395,6 @@
 				630470721C489D1C0064D81C /* Default-568h@2x.png in Resources */,
 				63B8D63C1C4BB43A005B5AF6 /* LICENSE in Resources */,
 				630470711C489D1C0064D81C /* burger@2x.png in Resources */,
-				630470941C48B1120064D81C /* tutorial_background_04@2x.jpg in Resources */,
 				630470551C4881690064D81C /* Assets.xcassets in Resources */,
 				6304708F1C48B1120064D81C /* button-background@2x.png in Resources */,
 				630470921C48B1120064D81C /* tutorial_background_02@2x.jpg in Resources */,
@@ -584,7 +580,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "net.appbees.AirPlus-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "f95ee0c2-d4bc-4cc9-9978-56211aa77c16";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -600,7 +596,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "net.appbees.AirPlus-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "f95ee0c2-d4bc-4cc9-9978-56211aa77c16";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

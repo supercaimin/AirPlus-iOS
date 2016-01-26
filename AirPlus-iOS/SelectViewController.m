@@ -60,7 +60,7 @@ static NSString * const FUITableViewControllerCellReuseIdentifier = @"FUITableVi
     
     self.schools = @[@"Nanjing International School"];
     
-    self.devices = @[@"NIS Design Center", @"EtonHouse", @"NIS Gym", @"ABCCDDD"];
+    self.devices = @[@"NIS Design Center", @"NIS Gym", @"ABCCDDD"];
     
 }
 

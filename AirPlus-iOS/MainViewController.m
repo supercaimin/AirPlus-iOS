@@ -70,8 +70,8 @@
     
     self.schools = @[@"Nanjing International School"];
     
-    self.devices = @[@"NIS Design Center", @"EtonHouse", @"NIS Gym"];
-    self.serials = @[@"IPM251508016", @"IPM251508022", @"IPM251514006"];
+    self.devices = @[@"NIS Design Center", @"NIS Gym"];
+    self.serials = @[@"IPM251508016", @"IPM251514006"];
     
     
     [AFHttpTool login:^(AFHttpResult *response) {
@@ -94,11 +94,8 @@
             if ([[pm objectForKey:@"serial"] isEqualToString:@"IPM251508016"]) {
                 [ipms1 addObject:pm];
             }
-            if ([[pm objectForKey:@"serial"] isEqualToString:@"IPM251508022"]) {
-                [ipms2 addObject:pm];
-            }
             if ([[pm objectForKey:@"serial"] isEqualToString:@"IPM251514006"]) {
-                [ipms3 addObject:pm];
+                [ipms2 addObject:pm];
             }
             
         }
@@ -187,27 +184,23 @@
 
 - (void) showTutorialView
 {
-    ICETutorialPage *layer1 = [[ICETutorialPage alloc] initWithTitle:@"Picture 1"
-                                                            subTitle:@"Champs-Elysées by night"
+    ICETutorialPage *layer1 = [[ICETutorialPage alloc] initWithTitle:@""
+                                                            subTitle:@""
                                                          pictureName:@"tutorial_background_00@2x.jpg"
                                                             duration:3.0];
-    ICETutorialPage *layer2 = [[ICETutorialPage alloc] initWithTitle:@"Picture 2"
-                                                            subTitle:@"The Eiffel Tower with\n cloudy weather"
+    ICETutorialPage *layer2 = [[ICETutorialPage alloc] initWithTitle:@""
+                                                            subTitle:@""
                                                          pictureName:@"tutorial_background_01@2x.jpg"
                                                             duration:3.0];
-    ICETutorialPage *layer3 = [[ICETutorialPage alloc] initWithTitle:@"Picture 3"
-                                                            subTitle:@"An other famous street of Paris"
+    ICETutorialPage *layer3 = [[ICETutorialPage alloc] initWithTitle:@""
+                                                            subTitle:@""
                                                          pictureName:@"tutorial_background_02@2x.jpg"
                                                             duration:3.0];
-    ICETutorialPage *layer4 = [[ICETutorialPage alloc] initWithTitle:@"Picture 4"
-                                                            subTitle:@"The Eiffel Tower with a better weather"
+    ICETutorialPage *layer4 = [[ICETutorialPage alloc] initWithTitle:@""
+                                                            subTitle:@""
                                                          pictureName:@"tutorial_background_03@2x.jpg"
                                                             duration:3.0];
-    ICETutorialPage *layer5 = [[ICETutorialPage alloc] initWithTitle:@"Picture 5"
-                                                            subTitle:@"The Louvre's Museum Pyramide"
-                                                         pictureName:@"tutorial_background_04@2x.jpg"
-                                                            duration:3.0];
-    NSArray *tutorialLayers = @[layer1,layer2,layer3,layer4,layer5];
+    NSArray *tutorialLayers = @[layer1,layer2,layer3,layer4];
     
     // Set the common style for the title.
     ICETutorialLabelStyle *titleStyle = [[ICETutorialLabelStyle alloc] init];
@@ -272,7 +265,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 3;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

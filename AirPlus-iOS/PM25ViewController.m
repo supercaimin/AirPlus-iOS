@@ -151,7 +151,7 @@
 
 - (NSUInteger)animatedImagesNumberOfImages:(JSAnimatedImagesView *)animatedImagesView
 {
-    return 5;
+    return 4;
 }
 
 - (UIImage *)animatedImagesView:(JSAnimatedImagesView *)animatedImagesView imageAtIndex:(NSUInteger)index
