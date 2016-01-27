@@ -48,6 +48,13 @@
 		637768651C5866C300E39B91 /* tutorial_background_02.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 637768611C5866C300E39B91 /* tutorial_background_02.jpg */; };
 		637768661C5866C300E39B91 /* tutorial_background_03.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 637768621C5866C300E39B91 /* tutorial_background_03.jpg */; };
 		637768681C58AB6B00E39B91 /* PMDetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 637768671C58AB6B00E39B91 /* PMDetailsView.xib */; };
+		6377686B1C58C90600E39B91 /* ModelBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 6377686A1C58C90600E39B91 /* ModelBase.m */; };
+		6377686E1C58CAE200E39B91 /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6377686D1C58CAE200E39B91 /* UserModel.m */; };
+		637768711C58CD7100E39B91 /* SchoolModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 637768701C58CD7100E39B91 /* SchoolModel.m */; };
+		637768741C58CDF800E39B91 /* CityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 637768731C58CDF800E39B91 /* CityModel.m */; };
+		637768771C58CEA100E39B91 /* InstrumentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 637768761C58CEA100E39B91 /* InstrumentModel.m */; };
+		6377687A1C58CF1E00E39B91 /* PhotoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 637768791C58CF1E00E39B91 /* PhotoModel.m */; };
+		6377687D1C58CF6300E39B91 /* PM25DataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6377687C1C58CF6300E39B91 /* PM25DataModel.m */; };
 		63B8D6311C4B9BEB005B5AF6 /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63B8D6301C4B9BEB005B5AF6 /* RegisterViewController.xib */; };
 		63B8D6351C4BA1AC005B5AF6 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63B8D6331C4BA1AC005B5AF6 /* AboutViewController.m */; };
 		63B8D6361C4BA1AC005B5AF6 /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63B8D6341C4BA1AC005B5AF6 /* AboutViewController.xib */; };
@@ -119,6 +126,20 @@
 		637768611C5866C300E39B91 /* tutorial_background_02.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tutorial_background_02.jpg; sourceTree = "<group>"; };
 		637768621C5866C300E39B91 /* tutorial_background_03.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tutorial_background_03.jpg; sourceTree = "<group>"; };
 		637768671C58AB6B00E39B91 /* PMDetailsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PMDetailsView.xib; sourceTree = "<group>"; };
+		637768691C58C90600E39B91 /* ModelBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelBase.h; sourceTree = "<group>"; };
+		6377686A1C58C90600E39B91 /* ModelBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelBase.m; sourceTree = "<group>"; };
+		6377686C1C58CAE200E39B91 /* UserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
+		6377686D1C58CAE200E39B91 /* UserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
+		6377686F1C58CD7100E39B91 /* SchoolModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchoolModel.h; sourceTree = "<group>"; };
+		637768701C58CD7100E39B91 /* SchoolModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchoolModel.m; sourceTree = "<group>"; };
+		637768721C58CDF800E39B91 /* CityModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityModel.h; sourceTree = "<group>"; };
+		637768731C58CDF800E39B91 /* CityModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityModel.m; sourceTree = "<group>"; };
+		637768751C58CEA100E39B91 /* InstrumentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstrumentModel.h; sourceTree = "<group>"; };
+		637768761C58CEA100E39B91 /* InstrumentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstrumentModel.m; sourceTree = "<group>"; };
+		637768781C58CF1E00E39B91 /* PhotoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoModel.h; sourceTree = "<group>"; };
+		637768791C58CF1E00E39B91 /* PhotoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoModel.m; sourceTree = "<group>"; };
+		6377687B1C58CF6300E39B91 /* PM25DataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PM25DataModel.h; sourceTree = "<group>"; };
+		6377687C1C58CF6300E39B91 /* PM25DataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PM25DataModel.m; sourceTree = "<group>"; };
 		63B8D6301C4B9BEB005B5AF6 /* RegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
 		63B8D6321C4BA1AC005B5AF6 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
 		63B8D6331C4BA1AC005B5AF6 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
@@ -292,6 +313,20 @@
 				6312F4851C54B2E70021C959 /* AFHttpResult.m */,
 				6312F4861C54B2E70021C959 /* AFHttpTool.h */,
 				6312F4871C54B2E70021C959 /* AFHttpTool.m */,
+				637768691C58C90600E39B91 /* ModelBase.h */,
+				6377686A1C58C90600E39B91 /* ModelBase.m */,
+				6377686C1C58CAE200E39B91 /* UserModel.h */,
+				6377686D1C58CAE200E39B91 /* UserModel.m */,
+				6377686F1C58CD7100E39B91 /* SchoolModel.h */,
+				637768701C58CD7100E39B91 /* SchoolModel.m */,
+				637768721C58CDF800E39B91 /* CityModel.h */,
+				637768731C58CDF800E39B91 /* CityModel.m */,
+				637768751C58CEA100E39B91 /* InstrumentModel.h */,
+				637768761C58CEA100E39B91 /* InstrumentModel.m */,
+				637768781C58CF1E00E39B91 /* PhotoModel.h */,
+				637768791C58CF1E00E39B91 /* PhotoModel.m */,
+				6377687B1C58CF6300E39B91 /* PM25DataModel.h */,
+				6377687C1C58CF6300E39B91 /* PM25DataModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -479,23 +514,30 @@
 			buildActionMask = 2147483647;
 			files = (
 				63B8D6471C4BDC31005B5AF6 /* PM25ViewController.m in Sources */,
+				637768771C58CEA100E39B91 /* InstrumentModel.m in Sources */,
 				630470B11C48F2500064D81C /* UITableViewCell+FlatUI.m in Sources */,
+				6377687D1C58CF6300E39B91 /* PM25DataModel.m in Sources */,
 				630470811C489ED50064D81C /* UIColor+RCColor.m in Sources */,
 				630470501C4881690064D81C /* MainViewController.m in Sources */,
 				63CEB2731C4D2EC600537B14 /* PMDetailsView.m in Sources */,
 				63B8D6431C4BC60C005B5AF6 /* PMItemCell.m in Sources */,
+				637768711C58CD7100E39B91 /* SchoolModel.m in Sources */,
 				6304704D1C4881690064D81C /* AppDelegate.m in Sources */,
 				630470A01C48B39C0064D81C /* ICETutorialStyle.m in Sources */,
+				6377687A1C58CF1E00E39B91 /* PhotoModel.m in Sources */,
 				6312F4891C54B2E70021C959 /* AFHttpTool.m in Sources */,
 				630470AE1C48EE170064D81C /* SelectViewController.m in Sources */,
 				6304709F1C48B39C0064D81C /* ICETutorialPage.m in Sources */,
 				630470A91C48BB290064D81C /* RegisterViewController.m in Sources */,
 				630470A31C48BAE50064D81C /* LoginViewController.m in Sources */,
 				6312F4881C54B2E70021C959 /* AFHttpResult.m in Sources */,
+				6377686E1C58CAE200E39B91 /* UserModel.m in Sources */,
+				637768741C58CDF800E39B91 /* CityModel.m in Sources */,
 				6304709E1C48B39C0064D81C /* ICETutorialController.m in Sources */,
 				63B8D63D1C4BB43A005B5AF6 /* README.md in Sources */,
 				63B8D63E1C4BB43A005B5AF6 /* RNFrostedSidebar.m in Sources */,
 				6304704A1C4881690064D81C /* main.m in Sources */,
+				6377686B1C58C90600E39B91 /* ModelBase.m in Sources */,
 				63B8D6351C4BA1AC005B5AF6 /* AboutViewController.m in Sources */,
 				630470821C489ED50064D81C /* UIImage+RCImage.m in Sources */,
 			);
