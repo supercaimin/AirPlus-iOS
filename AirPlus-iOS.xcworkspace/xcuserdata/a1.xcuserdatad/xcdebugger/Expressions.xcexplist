@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "__59+[AFHttpTool requestWithMethod:url:params:success:failure:]_block_invoke:AFHttpTool.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[MainViewController tableView:cellForRowAtIndexPath:]:MainViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.pms">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[GKLineGraph _maxValue]:GKLineGraph.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "[self _maxValue]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "__33-[PM25ViewController viewDidLoad]_block_invoke_2:PM25ViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.pm24Str">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>
