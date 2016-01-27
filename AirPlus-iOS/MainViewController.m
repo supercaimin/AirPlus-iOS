@@ -70,8 +70,8 @@
     
     self.schools = @[@"Nanjing International School"];
     
-    self.devices = @[@"NIS Design Center", @"NIS Gym"];
-    self.serials = @[@"IPM251508016", @"IPM251514006"];
+    self.devices = @[@"NIS Design Center", @"NIS Gym", @"NIS C129", @"NIS D218"];
+    self.serials = @[@"IPM251508016", @"IPM251514006", @"IPM251508034", @"IPM251515027"];
     
     
     [AFHttpTool login:^(AFHttpResult *response) {
@@ -87,6 +87,8 @@
     NSMutableArray *ipms1 = [NSMutableArray array];
     NSMutableArray *ipms2 = [NSMutableArray array];
     NSMutableArray *ipms3 = [NSMutableArray array];
+    NSMutableArray *ipms4 = [NSMutableArray array];
+
     self.pms = [NSMutableArray array];
     
     [AFHttpTool syncdata:^(AFHttpResult *response) {
@@ -97,11 +99,17 @@
             if ([[pm objectForKey:@"serial"] isEqualToString:@"IPM251514006"]) {
                 [ipms2 addObject:pm];
             }
-            
+            if ([[pm objectForKey:@"serial"] isEqualToString:@"IPM251508034"]) {
+                [ipms3 addObject:pm];
+            }
+            if ([[pm objectForKey:@"serial"] isEqualToString:@"IPM251515027"]) {
+                [ipms4 addObject:pm];
+            }
         }
         [self.pms addObject:ipms1];
         [self.pms addObject:ipms2];
         [self.pms addObject:ipms3];
+        [self.pms addObject:ipms4];
 
         [self.tableView reloadData];
     } failure:^(NSError *err, NSString *responseString) {
@@ -265,7 +273,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    return self.pms.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

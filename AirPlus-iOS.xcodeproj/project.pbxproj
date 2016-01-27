@@ -43,6 +43,11 @@
 		630470B11C48F2500064D81C /* UITableViewCell+FlatUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 630470B01C48F2500064D81C /* UITableViewCell+FlatUI.m */; };
 		6312F4881C54B2E70021C959 /* AFHttpResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 6312F4851C54B2E70021C959 /* AFHttpResult.m */; };
 		6312F4891C54B2E70021C959 /* AFHttpTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 6312F4871C54B2E70021C959 /* AFHttpTool.m */; };
+		637768631C5866C300E39B91 /* tutorial_background_00.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6377685F1C5866C300E39B91 /* tutorial_background_00.jpg */; };
+		637768641C5866C300E39B91 /* tutorial_background_01.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 637768601C5866C300E39B91 /* tutorial_background_01.jpg */; };
+		637768651C5866C300E39B91 /* tutorial_background_02.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 637768611C5866C300E39B91 /* tutorial_background_02.jpg */; };
+		637768661C5866C300E39B91 /* tutorial_background_03.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 637768621C5866C300E39B91 /* tutorial_background_03.jpg */; };
+		637768681C58AB6B00E39B91 /* PMDetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 637768671C58AB6B00E39B91 /* PMDetailsView.xib */; };
 		63B8D6311C4B9BEB005B5AF6 /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63B8D6301C4B9BEB005B5AF6 /* RegisterViewController.xib */; };
 		63B8D6351C4BA1AC005B5AF6 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63B8D6331C4BA1AC005B5AF6 /* AboutViewController.m */; };
 		63B8D6361C4BA1AC005B5AF6 /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63B8D6341C4BA1AC005B5AF6 /* AboutViewController.xib */; };
@@ -53,7 +58,6 @@
 		63B8D6441C4BC60C005B5AF6 /* PMItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63B8D6421C4BC60C005B5AF6 /* PMItemCell.xib */; };
 		63B8D6471C4BDC31005B5AF6 /* PM25ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63B8D6461C4BDC31005B5AF6 /* PM25ViewController.m */; };
 		63B8D6491C4BE105005B5AF6 /* PM25ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63B8D6481C4BE105005B5AF6 /* PM25ViewController.xib */; };
-		63CEB2701C4D2C9900537B14 /* PMDetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63CEB26F1C4D2C9900537B14 /* PMDetailsView.xib */; };
 		63CEB2731C4D2EC600537B14 /* PMDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 63CEB2721C4D2EC600537B14 /* PMDetailsView.m */; };
 /* End PBXBuildFile section */
 
@@ -110,6 +114,11 @@
 		6312F4851C54B2E70021C959 /* AFHttpResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHttpResult.m; sourceTree = "<group>"; };
 		6312F4861C54B2E70021C959 /* AFHttpTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHttpTool.h; sourceTree = "<group>"; };
 		6312F4871C54B2E70021C959 /* AFHttpTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHttpTool.m; sourceTree = "<group>"; };
+		6377685F1C5866C300E39B91 /* tutorial_background_00.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tutorial_background_00.jpg; sourceTree = "<group>"; };
+		637768601C5866C300E39B91 /* tutorial_background_01.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tutorial_background_01.jpg; sourceTree = "<group>"; };
+		637768611C5866C300E39B91 /* tutorial_background_02.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tutorial_background_02.jpg; sourceTree = "<group>"; };
+		637768621C5866C300E39B91 /* tutorial_background_03.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tutorial_background_03.jpg; sourceTree = "<group>"; };
+		637768671C58AB6B00E39B91 /* PMDetailsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PMDetailsView.xib; sourceTree = "<group>"; };
 		63B8D6301C4B9BEB005B5AF6 /* RegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
 		63B8D6321C4BA1AC005B5AF6 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
 		63B8D6331C4BA1AC005B5AF6 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
@@ -124,7 +133,6 @@
 		63B8D6451C4BDC31005B5AF6 /* PM25ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PM25ViewController.h; sourceTree = "<group>"; };
 		63B8D6461C4BDC31005B5AF6 /* PM25ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PM25ViewController.m; sourceTree = "<group>"; };
 		63B8D6481C4BE105005B5AF6 /* PM25ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PM25ViewController.xib; sourceTree = "<group>"; };
-		63CEB26F1C4D2C9900537B14 /* PMDetailsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PMDetailsView.xib; sourceTree = "<group>"; };
 		63CEB2711C4D2EC600537B14 /* PMDetailsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMDetailsView.h; sourceTree = "<group>"; };
 		63CEB2721C4D2EC600537B14 /* PMDetailsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMDetailsView.m; sourceTree = "<group>"; };
 		71438D44AB4C6C86CFED6D85 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -205,6 +213,10 @@
 		630470481C4881690064D81C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				6377685F1C5866C300E39B91 /* tutorial_background_00.jpg */,
+				637768601C5866C300E39B91 /* tutorial_background_01.jpg */,
+				637768611C5866C300E39B91 /* tutorial_background_02.jpg */,
+				637768621C5866C300E39B91 /* tutorial_background_03.jpg */,
 				630470831C48B1120064D81C /* background-gradient.png */,
 				630470841C48B1120064D81C /* background-gradient@2x.png */,
 				630470851C48B1120064D81C /* button-background.png */,
@@ -301,9 +313,9 @@
 				63B8D6401C4BC60C005B5AF6 /* PMItemCell.h */,
 				63B8D6411C4BC60C005B5AF6 /* PMItemCell.m */,
 				63B8D6421C4BC60C005B5AF6 /* PMItemCell.xib */,
-				63CEB26F1C4D2C9900537B14 /* PMDetailsView.xib */,
 				63CEB2711C4D2EC600537B14 /* PMDetailsView.h */,
 				63CEB2721C4D2EC600537B14 /* PMDetailsView.m */,
+				637768671C58AB6B00E39B91 /* PMDetailsView.xib */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -385,17 +397,21 @@
 				6304708E1C48B1120064D81C /* button-background.png in Resources */,
 				63B8D6361C4BA1AC005B5AF6 /* AboutViewController.xib in Resources */,
 				63B8D6441C4BC60C005B5AF6 /* PMItemCell.xib in Resources */,
-				63CEB2701C4D2C9900537B14 /* PMDetailsView.xib in Resources */,
+				637768641C5866C300E39B91 /* tutorial_background_01.jpg in Resources */,
 				6304707C1C489D1C0064D81C /* star@2x.png in Resources */,
 				630470901C48B1120064D81C /* tutorial_background_00@2x.jpg in Resources */,
 				63B8D6491C4BE105005B5AF6 /* PM25ViewController.xib in Resources */,
 				630470AB1C48DDD50064D81C /* LoginViewController.xib in Resources */,
 				6304708C1C48B1120064D81C /* background-gradient.png in Resources */,
 				630470701C489D1C0064D81C /* burger.png in Resources */,
+				637768631C5866C300E39B91 /* tutorial_background_00.jpg in Resources */,
 				630470721C489D1C0064D81C /* Default-568h@2x.png in Resources */,
+				637768661C5866C300E39B91 /* tutorial_background_03.jpg in Resources */,
 				63B8D63C1C4BB43A005B5AF6 /* LICENSE in Resources */,
 				630470711C489D1C0064D81C /* burger@2x.png in Resources */,
 				630470551C4881690064D81C /* Assets.xcassets in Resources */,
+				637768681C58AB6B00E39B91 /* PMDetailsView.xib in Resources */,
+				637768651C5866C300E39B91 /* tutorial_background_02.jpg in Resources */,
 				6304708F1C48B1120064D81C /* button-background@2x.png in Resources */,
 				630470921C48B1120064D81C /* tutorial_background_02@2x.jpg in Resources */,
 				6304707A1C489D1C0064D81C /* profile@2x.png in Resources */,

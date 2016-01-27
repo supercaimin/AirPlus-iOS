@@ -37,9 +37,13 @@
 - (id)mk_max {
     if ([self mk_isEmpty]) return [NSDecimalNumber zero];
     
-    return [self mk_reduce:^id(id item, id aggregate) {
-        return ([item compare:aggregate] == NSOrderedDescending) ? item : aggregate;
+    __block float maxValue = 0;
+    
+    [self enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        maxValue = MAX(maxValue, [obj floatValue]);
     }];
+    
+    return [NSDecimalNumber numberWithFloat:maxValue];
 }
 
 - (id)mk_min {

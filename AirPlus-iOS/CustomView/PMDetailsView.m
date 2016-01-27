@@ -154,7 +154,7 @@
     
     self.graph.startFromZero = YES;
     
-    self.graph.valueLabelCount = 8;
+    self.graph.valueLabelCount = 6;
     
     [self.graph draw];
 }
@@ -167,17 +167,17 @@
 }
 
 - (UIColor *)colorForLineAtIndex:(NSInteger)index {
-    id colors = @[[UIColor greenSeaColor],
-                  [UIColor wisteriaColor]
+    id colors = @[[UIColor wisteriaColor],
+                  [UIColor greenSeaColor]
                   ];
     return [colors objectAtIndex:index];
 }
 
 - (NSArray *)valuesForLineAtIndex:(NSInteger)index {
     if (index == 0) {
-        return self.pm25s;
+        return self.pms;
     }
-    return self.pms;
+    return self.pm25s;
 }
 
 - (CFTimeInterval)animationDurationForLineAtIndex:(NSInteger)index {

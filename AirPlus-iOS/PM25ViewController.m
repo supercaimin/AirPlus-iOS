@@ -80,7 +80,7 @@
                         j ++;
                     }
                     
-                    NSString *pm25Str = [responseString substringWithRange:NSMakeRange(i+6, j - i - 6)];
+                    NSString *pm25Str = [responseString substringWithRange:NSMakeRange(i+ 6, j - i - 6)];
                     self.outPM25s = [pm25Str componentsSeparatedByString:@","];
 
                     
@@ -131,7 +131,7 @@
 - (UIScrollView *) scrollView {
     if(!_scrollView){
         _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_HEIGHT, SCREEN_HEIGHT - 64 - 44)];
-        _scrollView.contentSize = CGSizeMake(SCREEN_WIDTH, SCREEN_HEIGHT - 64 - 44 + 300);
+        _scrollView.contentSize = CGSizeMake(SCREEN_WIDTH, SCREEN_HEIGHT - 64 + 300);
         _scrollView.showsVerticalScrollIndicator = NO;
         [self.view addSubview:_scrollView];
     }
@@ -141,7 +141,7 @@
 - (PMDetailsView *) pmContentView {
     if (!_pmContentView) {
         _pmContentView = [PMDetailsView instancePMDetailsView];
-        _pmContentView.frame = CGRectMake(0, 300, SCREEN_WIDTH, SCREEN_HEIGHT - 64 - 44);
+        _pmContentView.frame = CGRectMake(0, 300, SCREEN_WIDTH, SCREEN_HEIGHT - 64);
         _pmContentView.backgroundColor = RGBA(0xec, 0xf0, 0xf1, 0.8);
     }
     return _pmContentView;
