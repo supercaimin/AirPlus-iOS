@@ -11,6 +11,9 @@
 
 #import <MBProgressHUD/MBProgressHUD.h>
 
+
+
+
 #import "AFHttpTool.h"
 
 #import "UIColor+RCColor.h"
@@ -76,7 +79,7 @@
 #define SYSTEM_VERSION_LESS_THAN_OR_EQUAL_TO(v)     ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedDescending)
 
 
-#define FAKE_SERVER     @"http://121.40.33.126:8086/index.php/api/"
+#define FAKE_SERVER     @"http://180.76.157.45/AirPlus-Server/api/index/"
 #define BASE_URL        @"http://121.40.33.126:8086/"
 
 #define PMWEB_LOGIN     @"http://139.196.40.169:8080/pmweb/login_check"

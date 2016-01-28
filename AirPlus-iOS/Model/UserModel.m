@@ -10,10 +10,10 @@
 
 @implementation UserModel
 
-- (void) login:(NSString *)email password:(NSString *)password success:(void (^)(AFHttpResult *))success failure:(void (^)(NSError *))failure
++ (void) login:(NSString *)email password:(NSString *)password success:(void (^)(AFHttpResult *))success failure:(void (^)(NSError *))failure
 {
     NSDictionary *params = @{@"email":email, @"password":password};
-    [self requestWithMethod:RequestMethodTypePost url:@"login" params:params success:success failure:failure];
+    [UserModel requestWithMethod:RequestMethodTypePost url:@"login" params:params success:success failure:failure];
 }
 
 @end

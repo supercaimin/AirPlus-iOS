@@ -140,6 +140,7 @@
 		637768791C58CF1E00E39B91 /* PhotoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoModel.m; sourceTree = "<group>"; };
 		6377687B1C58CF6300E39B91 /* PM25DataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PM25DataModel.h; sourceTree = "<group>"; };
 		6377687C1C58CF6300E39B91 /* PM25DataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PM25DataModel.m; sourceTree = "<group>"; };
+		6377687E1C58D71B00E39B91 /* ModelConst.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ModelConst.h; sourceTree = "<group>"; };
 		63B8D6301C4B9BEB005B5AF6 /* RegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
 		63B8D6321C4BA1AC005B5AF6 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
 		63B8D6331C4BA1AC005B5AF6 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
@@ -327,6 +328,7 @@
 				637768791C58CF1E00E39B91 /* PhotoModel.m */,
 				6377687B1C58CF6300E39B91 /* PM25DataModel.h */,
 				6377687C1C58CF6300E39B91 /* PM25DataModel.m */,
+				6377687E1C58D71B00E39B91 /* ModelConst.h */,
 			);
 			path = Model;
 			sourceTree = "<group>";

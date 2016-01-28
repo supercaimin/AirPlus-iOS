@@ -6,7 +6,6 @@
 //  Copyright © 2016年 Appbees.net. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 
 #import "ModelBase.h"
 

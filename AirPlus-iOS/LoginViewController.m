@@ -10,6 +10,8 @@
 
 #import "Constants.h"
 
+#import "ModelConst.h"
+
 @interface LoginViewController ()
 
 
@@ -77,6 +79,7 @@
 
 - (void) loginButtonPressed:(id) sender
 {
+
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -93,12 +96,16 @@
 
 
 - (IBAction)finishButtonPressed:(id)sender {
-    
-    [UIView animateWithDuration:0.3 animations:^{
-        self.navigationController.view.alpha = 0.0;
-    } completion:^(BOOL finished) {
-        [self.navigationController.view removeFromSuperview];
+    [UserModel login:self.emailTextField.text password:self.passwordTextField.text success:^(AFHttpResult *response) {
+        [UIView animateWithDuration:0.3 animations:^{
+            self.navigationController.view.alpha = 0.0;
+        } completion:^(BOOL finished) {
+            [self.navigationController.view removeFromSuperview];
+        }];
+    } failure:^(NSError *err) {
+        
     }];
+
     
 }
 

@@ -14,10 +14,7 @@
 
 @class AFHTTPRequestOperation;
 
-typedef NS_ENUM(NSInteger, RequestMethodType){
-    RequestMethodTypePost = 1,
-    RequestMethodTypeGet = 2
-};
+
 
 @interface AFHttpTool : NSObject
 

@@ -16,7 +16,8 @@
 #define ContentType @"application/json"
 
 @implementation ModelBase
-- (void)requestWithMethod:(RequestMethodType)methodType
+
++ (void)requestWithMethod:(RequestMethodType)methodType
                       url:(NSString*)url
                    params:(NSDictionary*)params
                   success:(void (^)(AFHttpResult *response))success
@@ -67,7 +68,7 @@
                   }
                   NSLog(@"%@",  operation.responseString);
               } failure:^(AFHTTPRequestOperation* operation, NSError* error) {
-                  if (failure) {
+                  NSLog(operation.responseString);                  if (failure) {
                   }
               }];
         }
