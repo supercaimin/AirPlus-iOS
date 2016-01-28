@@ -13,6 +13,8 @@
 
 @property (strong, nonatomic) NSString *uid;
 @property (strong, nonatomic) NSString *name;
+@property (strong, nonatomic) NSString *key;
 
-
++ (void) getAll:(void (^)(NSArray *citys))success
+       failure:(void (^)(NSError* err))failure;
 @end

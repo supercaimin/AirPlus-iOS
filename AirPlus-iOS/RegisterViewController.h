@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class SchoolModel;
+
 @interface RegisterViewController : UIViewController
+
+@property (nonatomic, strong) SchoolModel *school;
 
 @end

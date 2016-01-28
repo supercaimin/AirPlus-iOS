@@ -10,9 +10,13 @@
 
 #import "Constants.h"
 
+#import "ModelConst.h"
+
 #import "ICETutorialController.h"
 
 #import "RegisterViewController.h"
+
+#import "PM25ViewController.h"
 
 static NSString * const FUITableViewControllerCellReuseIdentifier = @"FUITableViewControllerCellReuseIdentifier";
 
@@ -21,9 +25,7 @@ static NSString * const FUITableViewControllerCellReuseIdentifier = @"FUITableVi
 
 @property (nonatomic, strong) UITableView *tableView;
 
-@property (nonatomic, strong) NSArray *citys;
-@property (nonatomic, strong) NSArray *schools;
-@property (nonatomic, strong) NSArray *devices;
+@property (nonatomic, strong) NSArray *datas;
 
 @end
 
@@ -56,11 +58,32 @@ static NSString * const FUITableViewControllerCellReuseIdentifier = @"FUITableVi
     
     [self.tableView reloadData];
     
-    self.citys = @[@"Nanjing"];
     
-    self.schools = @[@"Nanjing International School"];
-    
-    self.devices = @[@"NIS Design Center", @"NIS Gym",  @"NIS C129", @"NIS D218"];
+    if (self.level == APSelectCityLevel) {
+        
+        [CityModel getAll:^(NSArray *citys) {
+            self.datas = citys;
+            [self.tableView reloadData];
+        } failure:^(NSError *err) {
+            
+        }];
+    }else if (self.level == APSelectSchoolLevel){
+        CityModel *city = (CityModel *)self.selectedObject;
+        [SchoolModel getSchoolsWithCityId:city.uid success:^(NSArray *schools) {
+            self.datas = schools;
+            [self.tableView reloadData];
+        } failure:^(NSError *err) {
+            
+        }];
+    }else{
+            SchoolModel *school = (SchoolModel *)self.selectedObject;
+            [InstrumentModel getInstrumentsWithSchoolId:school.uid success:^(NSArray *instruments) {
+                self.datas = instruments;
+                [self.tableView reloadData];
+            } failure:^(NSError *err) {
+                
+            }];
+    }
     
 }
 
@@ -106,18 +129,7 @@ static NSString * const FUITableViewControllerCellReuseIdentifier = @"FUITableVi
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    if (self.level == APSelectCityLevel) {
-        return self.citys.count;
-    }
-    
-    if (self.level == APSelectLocationLevel) {
-        return self.devices.count;
-    }
-    
-    if (self.level == APSelectSchoolLevel) {
-        return self.schools.count;
-    }
-    return 0;
+    return self.datas.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -143,17 +155,20 @@ static NSString * const FUITableViewControllerCellReuseIdentifier = @"FUITableVi
     cell.cornerRadius = 0.f;
     
     if (self.level == APSelectCityLevel) {
-        cell.textLabel.text = [self.citys objectAtIndex:indexPath.section];
+        CityModel *city = [self.datas objectAtIndex:indexPath.section];
+        cell.textLabel.text = city.name;
     }else if(self.level == APSelectSchoolLevel){
-        cell.textLabel.text = [self.schools objectAtIndex:indexPath.section];
+        SchoolModel *school = [self.datas objectAtIndex:indexPath.section];
+        cell.textLabel.text = school.name;
     }else{
- 
-        
-        if(indexPath.section == 3 ){
-            cell.textLabel.text = [self.devices objectAtIndex:indexPath.section];
+        InstrumentModel *instrument = [self.datas objectAtIndex:indexPath.section];
+
+        if(!instrument.isPublic &&![instrument.schoolId isEqualToString:[UserModel sharedLoginUser].uid]){
+            cell.textLabel.text = instrument.name;
             cell.textLabel.textColor = [UIColor darkGrayColor];
         }else{
-            NSString *text = [NSString stringWithFormat:@"%@%@", [NSString iconStringForEnum:FUIEye], [self.devices objectAtIndex:indexPath.section]];
+            cell.textLabel.text = instrument.name;
+            NSString *text = [NSString stringWithFormat:@"%@%@", [NSString iconStringForEnum:FUIEye], instrument.name];
             cell.textLabel.font = [UIFont iconFontWithSize:17.0];
             cell.textLabel.text = text;
             cell.textLabel.textColor = [UIColor greenSeaColor];
@@ -174,22 +189,28 @@ static NSString * const FUITableViewControllerCellReuseIdentifier = @"FUITableVi
         SelectViewController *sVc = [[SelectViewController alloc] init];
         sVc.level = APSelectSchoolLevel;
         sVc.type = self.type;
+        sVc.selectedObject = [self.datas objectAtIndex:indexPath.section];
         [self.navigationController pushViewController:sVc animated:YES];
     }else{
         if (self.type == APSelectRegisterType) {
             
             RegisterViewController *rVc = [[RegisterViewController alloc] init];
+            rVc.school =  [self.datas objectAtIndex:indexPath.section];
             [self.navigationController pushViewController:rVc animated:YES];
         }else{
             if (self.level == APSelectSchoolLevel) {
                 SelectViewController *sVc = [[SelectViewController alloc] init];
                 sVc.level = APSelectLocationLevel;
                 sVc.type = self.type;
+                sVc.selectedObject = [self.datas objectAtIndex:indexPath.section];
                 [self.navigationController pushViewController:sVc animated:YES];
             }else if(self.level == APSelectLocationLevel){
-                if(indexPath.section % 2 == 0 ){
-                }else{
-                    [self.navigationController popToRootViewControllerAnimated:YES];
+                InstrumentModel *instrument = [self.datas objectAtIndex:indexPath.section];
+                
+                if(instrument.isPublic || [instrument.schoolId isEqualToString:[UserModel sharedLoginUser].uid]){
+                    PM25ViewController *pVc = [[PM25ViewController alloc] init];
+                    pVc.instrument = instrument;
+                    [self.navigationController pushViewController:pVc animated:YES];
                 }
             }
         }

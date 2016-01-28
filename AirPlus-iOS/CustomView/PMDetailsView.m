@@ -130,7 +130,9 @@
 {
     NSMutableArray *hours = [[NSMutableArray alloc] init];
     NSMutableArray *pms = [[NSMutableArray alloc] init];
-    [datas enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+    NSArray* reversedArray = [[datas reverseObjectEnumerator] allObjects];
+
+    [reversedArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         NSDictionary *dict = obj;
         NSString *date = [dict objectForKey:@"readingDate"];
         NSString *hour = [date substringWithRange:NSMakeRange(11, 2)];
@@ -143,7 +145,7 @@
         }
     }];
     
-    self.pms = pms;
+    self.pms =  [[pms reverseObjectEnumerator] allObjects];
 }
 - (void)_setupExampleGraph {
     

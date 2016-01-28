@@ -14,14 +14,22 @@
 
 #import "Constants.h"
 
+#import "ModelConst.h"
+
 @interface PM25ViewController ()<JSAnimatedImagesViewDataSource>
 
 @property (strong, nonatomic) UIScrollView *scrollView;
 @property (strong, nonatomic) IBOutlet JSAnimatedImagesView *animatedImagesView;
 
+@property (strong, nonatomic) UILabel *addLabel;
+
 @property (strong, nonatomic) PMDetailsView *pmContentView;
 
 @property (strong, nonatomic) NSArray *outPM25s;
+
+
+@property (nonatomic, strong) NSArray *pms;
+
 
 @end
 
@@ -29,6 +37,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.title = self.instrument.name;
     
     self.view.backgroundColor = [UIColor cloudsColor];
     
@@ -45,21 +55,27 @@
                             
                             CGRectMake(0.0f, SCREEN_HEIGHT - 44.0f, 320.0f, 44.0f)];
     buttomToolbar.backgroundColor = RGBA(0x16, 0xa0, 0x85, 0.5);
-    UILabel *addLabel = [[UILabel alloc] initWithFrame:CGRectMake(100, 2, 200, 40)];
-    addLabel.font = [UIFont iconFontWithSize:16.0];
-    addLabel.textColor = [UIColor cloudsColor];
-    addLabel.text =[NSString stringWithFormat:@"%@Add To Home", [NSString iconStringForEnum:FUIPlus]];
+    self.addLabel = [[UILabel alloc] initWithFrame:CGRectMake(100, 2, 200, 40)];
+    self.addLabel.font = [UIFont iconFontWithSize:16.0];
+    self.addLabel.textColor = [UIColor cloudsColor];
+    if ([[UserModel sharedLoginUser] isContainInstruments:self.instrument]) {
+        self.addLabel.text =[NSString stringWithFormat:@"%@Remove From Home", [NSString iconStringForEnum:FUICross]];
+    }else{
+        self.addLabel.text =[NSString stringWithFormat:@"%@Add To Home", [NSString iconStringForEnum:FUIPlus]];
+    }
     
-    addLabel.userInteractionEnabled=YES;
+    self.addLabel.userInteractionEnabled=YES;
     UITapGestureRecognizer *labelTapGestureRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(addToHome:)];
     
-    [addLabel addGestureRecognizer:labelTapGestureRecognizer];
+    [self.addLabel addGestureRecognizer:labelTapGestureRecognizer];
     
-    [buttomToolbar addSubview:addLabel];
+    [buttomToolbar addSubview:self.addLabel];
     
     [self.view addSubview:buttomToolbar];
     
     [self.scrollView addSubview:self.pmContentView];
+    
+    self.pms = [[AFHttpTool pmDataSyncMananger] getpmdatasWithSerial:self.instrument.serial];
     
     [AFHttpTool getOutdoorData:^(AFHttpResult *response) {
 
@@ -94,7 +110,6 @@
     }];
 
 
-
 }
 
 
@@ -120,7 +135,24 @@
 
 - (void)addToHome:(id)sender
 {
+    if ([[UserModel sharedLoginUser] isContainInstruments:self.instrument]) {
+        [InstrumentModel delUserInstrument:[UserModel sharedLoginUser].uid instrumentId:self.instrument.uid success:^{
+            self.addLabel.text =[NSString stringWithFormat:@"%@Add To Home", [NSString iconStringForEnum:FUIPlus]];
+            [[NSNotificationCenter defaultCenter] postNotificationName:kReloadNeed object:nil];
+        } failure:^(NSError *err) {
+            self.addLabel.text =[NSString stringWithFormat:@"%@Add To Home", [NSString iconStringForEnum:FUIPlus]];
+            [[NSNotificationCenter defaultCenter] postNotificationName:kReloadNeed object:nil];
+        }];
+    }else{
+        [InstrumentModel addUserInstrument:[UserModel sharedLoginUser].uid instrumentId:self.instrument.uid success:^{
+            self.addLabel.text =[NSString stringWithFormat:@"%@Remove From Home", [NSString iconStringForEnum:FUICross]];
+            [[NSNotificationCenter defaultCenter] postNotificationName:kReloadNeed object:nil];
+        } failure:^(NSError *err) {
+            self.addLabel.text =[NSString stringWithFormat:@"%@Remove From Home", [NSString iconStringForEnum:FUICross]];
+            [[NSNotificationCenter defaultCenter] postNotificationName:kReloadNeed object:nil];
+        }];
     
+    }
 }
 
 - (void)back:(id)sender
@@ -156,7 +188,8 @@
 
 - (UIImage *)animatedImagesView:(JSAnimatedImagesView *)animatedImagesView imageAtIndex:(NSUInteger)index
 {
-    return [UIImage imageNamed:[NSString stringWithFormat:@"tutorial_background_0%d.jpg", index]];
+    return [UIImage imageNamed:[NSString stringWithFormat:@"tutorial_background_0%lu.jpg", (unsigned long)index]];
 }
+
 
 @end

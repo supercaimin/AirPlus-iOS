@@ -30,6 +30,8 @@
     UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:self.mainViewController];
     self.window.rootViewController = navVC;
     [self.window makeKeyAndVisible];
+    
+    [[AFHttpTool pmDataSyncMananger] start];
     return YES;
 }
 

@@ -10,12 +10,22 @@
 #import <AFNetworking/AFNetworking.h>
 #import <AFNetworking/AFHTTPRequestOperationManager.h>
 
+static AFHttpTool *pmDataSyncMananger  = nil;
 
+#define kPMCacheData        @"PMCacheData"
 
 //#define ContentType @"text/html"
 //#define ContentType @"application/json"
 
 @implementation AFHttpTool
+
++ (AFHttpTool *)pmDataSyncMananger{
+    if (!pmDataSyncMananger) {
+        pmDataSyncMananger = [[AFHttpTool alloc] init];
+        pmDataSyncMananger.pmdatas = [AFHttpTool getDataWithFilename:kPMCacheData];
+    }
+    return pmDataSyncMananger;
+}
 
 + (void)requestWithMethod:(RequestMethodType)methodType
                       url:(NSString*)url
@@ -24,7 +34,6 @@
                   failure:(void (^)(NSError* err, NSString *responseString))failure
               contentType:(NSString *)contentType
 {
-    [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].keyWindow animated:YES];
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     //获得请求管理者
     AFHTTPRequestOperationManager* mgr = [[AFHTTPRequestOperationManager alloc] init];
@@ -39,7 +48,6 @@
             [mgr GET:url parameters:params
              success:^(AFHTTPRequestOperation* operation, NSDictionary* responseObj) {
                  [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-                 [MBProgressHUD hideAllHUDsForView:[UIApplication sharedApplication].keyWindow animated:YES];
 
                  if (success) {
                      AFHttpResult *result = [[AFHttpResult alloc] init];
@@ -50,7 +58,6 @@
                  }
                 // NSLog(@"%@",  operation.responseString);
              } failure:^(AFHTTPRequestOperation* operation, NSError* error) {
-                 [MBProgressHUD hideAllHUDsForView:[UIApplication sharedApplication].keyWindow animated:YES];
 
                  if (failure) {
                      failure(error, operation.responseString);
@@ -68,7 +75,6 @@
             [mgr POST:url parameters:params
               success:^(AFHTTPRequestOperation* operation, NSDictionary* responseObj) {
                   [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-                  [MBProgressHUD hideAllHUDsForView:[UIApplication sharedApplication].keyWindow animated:YES];
 
                   if (success) {
 
@@ -76,7 +82,6 @@
                   }
                   NSLog(@"%@",  operation.responseString);
               } failure:^(AFHTTPRequestOperation* operation, NSError* error) {
-                  [MBProgressHUD hideAllHUDsForView:[UIApplication sharedApplication].keyWindow animated:YES];
 
                   if (failure) {
                       failure(error, operation.responseString);
@@ -232,4 +237,67 @@
                           failure:failure
                       contentType:@"text/html"];
 }
+
+- (void)sysdata{
+
+    [AFHttpTool syncdata:^(AFHttpResult *response) {
+        self.pmdatas = response.jsonObject;
+        [AFHttpTool cacheWithData:response.jsonObject filename:kPMCacheData];
+        [[NSNotificationCenter defaultCenter] postNotificationName:kPMDataSyncSuccessNotification object:response.jsonObject];
+    } failure:^(NSError *err, NSString *responseString) {
+        
+    }];
+    
+}
+- (void) start
+{
+    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:3 * 60 target:self selector:@selector(timerTask) userInfo:nil repeats:YES];
+    [timer fire];
+
+}
+
+- (void) timerTask
+{
+    [AFHttpTool login:^(AFHttpResult *response) {
+        [self performSelector:@selector(sysdata) withObject:nil afterDelay:1.0];
+    } failure:^(NSError *err, NSString *responseString) {
+        [self performSelector:@selector(sysdata) withObject:nil afterDelay:1.0];
+    }];
+}
+
+- (NSArray *) getpmdatasWithSerial:(NSString *)serial
+{
+    NSMutableArray *ipms = [NSMutableArray array];
+    
+    for (NSDictionary *pm in self.pmdatas) {
+        if ([[pm objectForKey:@"serial"] isEqualToString:serial]) {
+            [ipms addObject:pm];
+        }
+    }
+    return ipms;
+}
+
++ (NSString *)documentDirectory
+{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES);
+    return [paths objectAtIndex:0];
+}
+
+
++ (void) cacheWithData:(id)data filename:(NSString *)filename
+{
+    NSString *filePath = [[AFHttpTool documentDirectory] stringByAppendingPathComponent:filename];
+    [NSKeyedArchiver archiveRootObject:data toFile:filePath];
+}
+
++ (id) getDataWithFilename:(NSString *) filename
+{
+    
+    NSString *filePath =[[AFHttpTool documentDirectory] stringByAppendingPathComponent:filename];
+    NSData *data = [NSData dataWithContentsOfFile:filePath];
+    id object = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    
+    return object;
+}
+    
 @end

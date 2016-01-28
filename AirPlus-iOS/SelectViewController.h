@@ -20,10 +20,16 @@ typedef enum {
 
 } APSelectType;
 
+
+
 @interface SelectViewController : UIViewController
 
 @property (assign, nonatomic) APSelectLevel level;
 @property (assign, nonatomic) APSelectType type;
+
+
+@property (strong, nonatomic) id selectedObject;
+
 
 
 @end

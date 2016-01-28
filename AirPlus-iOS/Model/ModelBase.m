@@ -44,8 +44,15 @@
                  [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
                  
                  if (success) {
+                     if ([[responseObj objectForKey:@"status"] integerValue] == YES) {
+                         AFHttpResult *result = [[AFHttpResult alloc] init];
+                         result.responseString = operation.responseString;
+                         result.errCode = [[responseObj objectForKey:@"status"] integerValue];
+                         result.msg = [responseObj objectForKey:@"msg"];
+                         result.jsonObject = [responseObj objectForKey:@"data"];
+                         success(result);
+                     }
                  }
-                 NSLog(@"%@",  operation.responseString);
              } failure:^(AFHTTPRequestOperation* operation, NSError* error) {
                  if (failure) {
                      failure(error);
@@ -63,13 +70,24 @@
                   [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
                   
                   if (success) {
-             
+                      if ([[responseObj objectForKey:@"status"] integerValue] == true) {
+                          AFHttpResult *result = [[AFHttpResult alloc] init];
+                          result.responseString = operation.responseString;
+                          result.errCode = [[responseObj objectForKey:@"status"] integerValue];
+                          result.msg = [responseObj objectForKey:@"msg"];
+                          result.jsonObject = [responseObj objectForKey:@"data"];
+                          success(result);
+                      }else{
+                          if (failure) {
+                              failure(nil);
+                          }
+                      }
                       
                   }
-                  NSLog(@"%@",  operation.responseString);
               } failure:^(AFHTTPRequestOperation* operation, NSError* error) {
-                  NSLog(operation.responseString);                  if (failure) {
-                  }
+                if (failure) {
+                    failure(error);
+                }
               }];
         }
             break;
@@ -77,5 +95,7 @@
             break;
     }
 }
+
+
 
 @end

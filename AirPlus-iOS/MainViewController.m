@@ -9,6 +9,7 @@
 #import "MainViewController.h"
 
 #import "Constants.h"
+#import "ModelConst.h"
 
 #import "RNFrostedSidebar.h"
 
@@ -32,10 +33,7 @@
 
 @property (strong, nonatomic) UITableView *tableView;
 
-@property (nonatomic, strong) NSArray *schools;
-@property (nonatomic, strong) NSArray *devices;
-@property (nonatomic, strong) NSArray *serials;
-@property (nonatomic, strong) NSMutableArray *pms;
+@property (nonatomic, strong) NSArray *instruments;
 
 
 @end
@@ -65,57 +63,45 @@
 
     [menuButton addTarget:self action:@selector(listButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:menuButton];
-    
-    [self showTutorialView];
-    
-    self.schools = @[@"Nanjing International School"];
-    
-    self.devices = @[@"NIS Design Center", @"NIS Gym", @"NIS C129", @"NIS D218"];
-    self.serials = @[@"IPM251508016", @"IPM251514006", @"IPM251508034", @"IPM251515027"];
+    if (![UserModel sharedLoginUser]) {
+        [self showTutorialView];
+    }else{
+        [self reload];
+    }
     
     
-    [AFHttpTool login:^(AFHttpResult *response) {
-        [self performSelector:@selector(sysdata) withObject:nil afterDelay:1.0];
-    } failure:^(NSError *err, NSString *responseString) {
-        [self performSelector:@selector(sysdata) withObject:nil afterDelay:1.0];
-    }];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sysdata) name:kPMDataSyncSuccessNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reload) name:kLoginDidFinished object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reload) name:kRegisterDidFinished object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reload) name:kReloadNeed object:nil];
 
 }
 
+
+- (void) reload
+{
+    [InstrumentModel getInstrumentsWithUserId:[UserModel sharedLoginUser].uid success:^(NSArray *instruments) {
+        self.instruments = instruments;
+        [UserModel sharedLoginUser].instruments = instruments;
+        [self sysdata];
+    } failure:^(NSError *err) {
+        
+    }];
+}
 - (void) sysdata
 {
-    NSMutableArray *ipms1 = [NSMutableArray array];
-    NSMutableArray *ipms2 = [NSMutableArray array];
-    NSMutableArray *ipms3 = [NSMutableArray array];
-    NSMutableArray *ipms4 = [NSMutableArray array];
-
-    self.pms = [NSMutableArray array];
-    
-    [AFHttpTool syncdata:^(AFHttpResult *response) {
-        for (NSDictionary *pm in response.jsonObject) {
-            if ([[pm objectForKey:@"serial"] isEqualToString:@"IPM251508016"]) {
-                [ipms1 addObject:pm];
-            }
-            if ([[pm objectForKey:@"serial"] isEqualToString:@"IPM251514006"]) {
-                [ipms2 addObject:pm];
-            }
-            if ([[pm objectForKey:@"serial"] isEqualToString:@"IPM251508034"]) {
-                [ipms3 addObject:pm];
-            }
-            if ([[pm objectForKey:@"serial"] isEqualToString:@"IPM251515027"]) {
-                [ipms4 addObject:pm];
+    [self.instruments enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        InstrumentModel *instrument = (InstrumentModel *)obj;
+        
+        for (NSDictionary *pm in [AFHttpTool pmDataSyncMananger].pmdatas) {
+            if ([[pm objectForKey:@"serial"] isEqualToString:instrument.serial]) {
+                instrument.pm = pm;
             }
         }
-        [self.pms addObject:ipms1];
-        [self.pms addObject:ipms2];
-        [self.pms addObject:ipms3];
-        [self.pms addObject:ipms4];
-
-        [self.tableView reloadData];
-    } failure:^(NSError *err, NSString *responseString) {
-        [self.tableView reloadData];
-
     }];
+    
+    [self.tableView reloadData];
 }
 
 
@@ -273,7 +259,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return self.pms.count;
+    return self.instruments.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -298,8 +284,8 @@
     [cell configureFlatCellWithColor:[UIColor cloudsColor]
                        selectedColor:[UIColor greenSeaColor]
                      roundingCorners:corners];
-    
-    [cell configureWithData:[[self.pms objectAtIndex:indexPath.section] lastObject] location:[self.devices objectAtIndex:indexPath.section] school:[self.schools objectAtIndex:0]];
+    InstrumentModel *instrument = [self.instruments objectAtIndex:indexPath.section];
+    [cell configureWithData:instrument.pm location:instrument.name school:instrument.schoolId];
     
     cell.cornerRadius = 0.f; //Optional
     cell.separatorHeight = 2.f;
@@ -315,9 +301,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     PM25ViewController *pVc = [[PM25ViewController alloc] init];
-    pVc.title = [self.devices objectAtIndex:indexPath.section];
-    pVc.pms = [self.pms objectAtIndex:indexPath.section];
-    
+    pVc.instrument = [self.instruments objectAtIndex:indexPath.section];
     [self.navigationController pushViewController:pVc animated:YES];
     
 }
@@ -348,6 +332,7 @@
 - (void)showLangOptions {
     FUIAlertView *alertView = [[FUIAlertView alloc] initWithTitle:@"Please select your language" message:@"You can change it later in settings" delegate:nil cancelButtonTitle:@"Dismiss" otherButtonTitles:@"English", @"中文", nil];
     alertView.alertViewStyle = FUIAlertViewStyleDefault;
+    alertView.tag = 100;
     
     alertView.delegate = self;
     alertView.titleLabel.textColor = [UIColor cloudsColor];
@@ -367,7 +352,8 @@
 {
     FUIAlertView *alertView = [[FUIAlertView alloc] initWithTitle:@"Logout?" message:@"注销后以便重新登陆" delegate:nil cancelButtonTitle:@"NO" otherButtonTitles:@"YES", nil];
     alertView.alertViewStyle = FUIAlertViewStyleDefault;
-    
+    alertView.tag = 101;
+
     alertView.delegate = self;
     alertView.titleLabel.textColor = [UIColor cloudsColor];
     alertView.titleLabel.font = [UIFont boldFlatFontOfSize:16];
@@ -384,5 +370,21 @@
 
 - (void)alertView:(FUIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
+    if (alertView.tag == 100) {
+        if (buttonIndex == 1) {
+            [[UserModel sharedLoginUser] setLangEn:YES];
+        }
+        
+        if (buttonIndex == 2) {
+            [[UserModel sharedLoginUser] setLangEn:NO];
+        }
+    }
+    
+    if (alertView.tag == 101) {
+        if (buttonIndex == 1) {
+            [DEFAULTS setObject:nil forKey:kUserLoginInfo];
+            [self showTutorialView];
+        }
+    }
 }
 @end

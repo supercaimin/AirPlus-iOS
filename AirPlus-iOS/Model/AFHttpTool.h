@@ -12,12 +12,14 @@
 
 #import "AFHttpResult.h"
 
+
 @class AFHTTPRequestOperation;
 
 
 
 @interface AFHttpTool : NSObject
 
++ (AFHttpTool *)pmDataSyncMananger;
 
 + (void)downloadFileWithOption:(NSDictionary *)paramDic
                  withInferface:(NSString*)requestURL
@@ -54,6 +56,12 @@
 
 + (void) getOutdoorData:(void (^)(AFHttpResult *response))success
                 failure:(void (^)(NSError* err, NSString *responseString))failure;
+
+- (void) start;
+
+- (NSArray *) getpmdatasWithSerial:(NSString *)serial;
+
+@property (nonatomic, strong) NSArray *pmdatas;
 
 
 @end

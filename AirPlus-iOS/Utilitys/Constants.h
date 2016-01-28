@@ -79,8 +79,8 @@
 #define SYSTEM_VERSION_LESS_THAN_OR_EQUAL_TO(v)     ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedDescending)
 
 
-#define FAKE_SERVER     @"http://180.76.157.45/AirPlus-Server/api/index/"
-#define BASE_URL        @"http://121.40.33.126:8086/"
+#define FAKE_SERVER     @"http://139.196.40.169/api/index/"
+#define BASE_URL        @"http://139.196.40.169/"
 
 #define PMWEB_LOGIN     @"http://139.196.40.169:8080/pmweb/login_check"
 #define PMWEB_DATA      @"http://139.196.40.169:8080/pmweb/data/getJson"
@@ -97,6 +97,16 @@
 
 #define kWXAPP_ID  @"wxfc6d08159f36df72"
 #define kWXAPP_SECRET   @"04f189702ce2dcf7d1ca913b8902a073"
+
+#define kUserLoginInfo                  @"UserLoginInfo"
+#define kLoginDidFinished                  @"LoginDidFinished"
+#define kRegisterDidFinished                  @"RegisterDidFinished"
+#define kReloadNeed                  @"ReloadNeed"
+
+
+
+#define kPMDataSyncSuccessNotification  @"PMDataSyncSuccessNotification"
+
 
 #ifndef TARGET_IPHONE_SIMULATOR
 #define CLog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);

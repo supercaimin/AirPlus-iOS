@@ -3,7 +3,26 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "-[GKLineGraph _maxValue]:GKLineGraph.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "[self _maxValue]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[MainViewController numberOfSectionsInTableView:]:MainViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.instruments">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "__59+[AFHttpTool requestWithMethod:url:params:success:failure:]_block_invoke:AFHttpTool.m">
+      </ContextState>
+      <ContextState
+         contextName = "__58+[ModelBase requestWithMethod:url:params:success:failure:]_block_invoke61:ModelBase.m">
       </ContextState>
       <ContextState
          contextName = "-[MainViewController tableView:cellForRowAtIndexPath:]:MainViewController.m">
@@ -14,12 +33,15 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "-[GKLineGraph _maxValue]:GKLineGraph.m">
+         contextName = "__58+[ModelBase requestWithMethod:url:params:success:failure:]_block_invoke50:ModelBase.m">
          <PersistentStrings>
             <PersistentString
-               value = "[self _maxValue]">
+               value = "">
             </PersistentString>
          </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "__52+[SchoolModel getSchoolsWithCityId:success:failure:]_block_invoke18:SchoolModel.m">
       </ContextState>
       <ContextState
          contextName = "__33-[PM25ViewController viewDidLoad]_block_invoke_2:PM25ViewController.m">
@@ -28,6 +50,9 @@
                value = "self.pm24Str">
             </PersistentString>
          </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "__60+[InstrumentModel getInstrumentsWithUserId:success:failure:]_block_invoke_2:InstrumentModel.m">
       </ContextState>
    </ContextStates>
 </VariablesViewState>

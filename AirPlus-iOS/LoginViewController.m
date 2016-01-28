@@ -12,6 +12,8 @@
 
 #import "ModelConst.h"
 
+#import "Utility.h"
+
 @interface LoginViewController ()
 
 
@@ -96,14 +98,26 @@
 
 
 - (IBAction)finishButtonPressed:(id)sender {
-    [UserModel login:self.emailTextField.text password:self.passwordTextField.text success:^(AFHttpResult *response) {
+    if (![Utility isEmailAddress:self.emailTextField.text]) {
+        [Utility showMessage:@"Mailbox is incorrect, please re-fill."];
+        return;
+    }
+    
+    if (self.passwordTextField.text.length < 6) {
+        [Utility showMessage:@"The password length should not be less than 6."];
+        return;
+    }
+    
+    [UserModel login:self.emailTextField.text password:self.passwordTextField.text success:^(UserModel *user) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:kLoginDidFinished object:nil];
         [UIView animateWithDuration:0.3 animations:^{
             self.navigationController.view.alpha = 0.0;
         } completion:^(BOOL finished) {
             [self.navigationController.view removeFromSuperview];
         }];
     } failure:^(NSError *err) {
-        
+        [Utility showMessage:@"Login Failed."];
+
     }];
 
     

@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+@class InstrumentModel;
+
 @interface PM25ViewController : UIViewController
 
-@property (nonatomic, strong) NSArray *pms;
-
+@property (nonatomic, strong) InstrumentModel *instrument;
 @end

@@ -8,6 +8,7 @@
 
 #import "ModelBase.h"
 
+@class InstrumentModel;
 
 typedef NS_ENUM(NSInteger, UserModelType){
     UserModelAdminType = 1,
@@ -20,11 +21,26 @@ typedef NS_ENUM(NSInteger, UserModelType){
 @property (strong, nonatomic) NSString *password;
 @property (strong, nonatomic) NSString *schoolId;
 @property (assign, nonatomic) UserModelType type;
+@property (strong, nonatomic) NSArray *instruments;
+
+- (BOOL) isContainInstruments:(InstrumentModel *)instrument;
+
 
 + (void) login:(NSString *)email
       password:(NSString *)password
-       success:(void (^)(AFHttpResult *response))success
+       success:(void (^)(UserModel *user))success
        failure:(void (^)(NSError* err))failure;
 
+
++ (void) register:(NSString *)email
+        password:(NSString *)password
+        schoolId:(NSString *)schoolId
+        success:(void (^)(UserModel *user))success
+        failure:(void (^)(NSError* err))failure;
+
++ (UserModel *) sharedLoginUser;
+
+- (BOOL) isLangEn;
+- (void) setLangEn:(BOOL) bo;
 
 @end

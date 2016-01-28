@@ -15,5 +15,6 @@
 @property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) NSString *cityId;
 
-
++ (void) getSchoolsWithCityId:(NSString *)cityId success:(void (^)(NSArray *schools))success
+        failure:(void (^)(NSError* err))failure;
 @end

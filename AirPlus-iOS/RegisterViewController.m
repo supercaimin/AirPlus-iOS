@@ -10,6 +10,10 @@
 
 #import "Constants.h"
 
+#import "ModelConst.h"
+
+#import "Utility.h"
+
 @interface RegisterViewController ()
 
 
@@ -75,7 +79,6 @@
     self.registerButton.cornerRadius = 6.0f;
     
     [self.registerButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateNormal];
-    [self.registerButton addTarget:self action:@selector(loginButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     
 }
 
@@ -84,17 +87,38 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void) loginButtonPressed:(id) sender
-{
-}
 
 - (IBAction)finishButtonPressed:(id)sender {
     
-    [UIView animateWithDuration:0.3 animations:^{
-        self.navigationController.view.alpha = 0.0;
-    } completion:^(BOOL finished) {
-        [self.navigationController.view removeFromSuperview];
+    if (![Utility isEmailAddress:self.emailTextField.text]) {
+        [Utility showMessage:@"Mailbox is incorrect, please re-fill."];
+        return;
+    }
+    
+    if (self.passwordTextField.text.length < 6) {
+        [Utility showMessage:@"The password length should not be less than 6."];
+        return;
+    }
+    
+    if (![self.passwordTextField.text isEqualToString:self.confirmPasswordTextField.text]) {
+        [Utility showMessage:@"Entered passwords differ."];
+        return;
+    }
+    [UserModel register:self.emailTextField.text password:self.passwordTextField.text schoolId:self.school.uid success:^(UserModel *user) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:kRegisterDidFinished object:nil];
+
+        [UIView animateWithDuration:0.3 animations:^{
+            self.navigationController.view.alpha = 0.0;
+        } completion:^(BOOL finished) {
+            [self.navigationController.view removeFromSuperview];
+        }];
+    } failure:^(NSError *err) {
+        if (err == nil) {
+            [Utility showMessage:@"Email has been registered."];
+        }
     }];
+    
+
     
 }
 
