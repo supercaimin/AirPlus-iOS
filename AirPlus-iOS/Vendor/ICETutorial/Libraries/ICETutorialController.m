@@ -100,8 +100,8 @@
     // UIButtons.
     
     self.leftButton.titleLabel.font = [UIFont flatFontOfSize:16];
-    self.leftButton.buttonColor = [UIColor turquoiseColor];
-    self.leftButton.shadowColor = [UIColor greenSeaColor];
+    self.leftButton.buttonColor = [UIColor peterRiverColor];
+    self.leftButton.shadowColor = [UIColor peterRiverColor];
     self.leftButton.shadowHeight = 3.0f;
     self.leftButton.cornerRadius = 6.0f;
     
@@ -109,8 +109,8 @@
     
     
     self.rightButton.titleLabel.font = [UIFont flatFontOfSize:16];
-    self.rightButton.buttonColor = [UIColor turquoiseColor];
-    self.rightButton.shadowColor = [UIColor greenSeaColor];
+    self.rightButton.buttonColor = [UIColor peterRiverColor];
+    self.rightButton.shadowColor = [UIColor peterRiverColor];
     self.rightButton.shadowHeight = 3.0f;
     self.rightButton.cornerRadius = 6.0f;
     

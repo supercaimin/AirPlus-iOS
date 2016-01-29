@@ -73,8 +73,8 @@
     [ self.confirmPasswordTextField setTextColor:[UIColor midnightBlueColor]];
     
     self.registerButton.titleLabel.font = [UIFont flatFontOfSize:20];
-    self.registerButton.buttonColor = [UIColor turquoiseColor];
-    self.registerButton.shadowColor = [UIColor greenSeaColor];
+    self.registerButton.buttonColor = [UIColor peterRiverColor];
+    self.registerButton.shadowColor = [UIColor peterRiverColor];
     self.registerButton.shadowHeight = 3.0f;
     self.registerButton.cornerRadius = 6.0f;
     

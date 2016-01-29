@@ -147,7 +147,7 @@ static NSString * const FUITableViewControllerCellReuseIdentifier = @"FUITableVi
     UIRectCorner corners = 0;
     UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:FUITableViewControllerCellReuseIdentifier];
     [cell configureFlatCellWithColor:[UIColor cloudsColor]
-                       selectedColor:[UIColor greenSeaColor]
+                       selectedColor:[UIColor peterRiverColor]
                      roundingCorners:corners];
     cell.textLabel.textColor = [UIColor blackColor];
     
@@ -171,7 +171,7 @@ static NSString * const FUITableViewControllerCellReuseIdentifier = @"FUITableVi
             NSString *text = [NSString stringWithFormat:@"%@%@", [NSString iconStringForEnum:FUIEye], instrument.name];
             cell.textLabel.font = [UIFont iconFontWithSize:17.0];
             cell.textLabel.text = text;
-            cell.textLabel.textColor = [UIColor greenSeaColor];
+            cell.textLabel.textColor = [UIColor peterRiverColor];
         }
 
     }

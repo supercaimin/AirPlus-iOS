@@ -51,9 +51,10 @@ static UserModel *sharedLoginUser = nil;
 {
     NSDictionary *params = @{@"email": email, @"password":password};
     [UserModel requestWithMethod:RequestMethodTypePost url:@"login" params:params success:^(AFHttpResult *response) {
-        success(response.jsonObject);
+        
         [DEFAULTS setObject:response.jsonObject forKey:kUserLoginInfo];
         sharedLoginUser = nil;
+        success(response.jsonObject);
     } failure:^(NSError *err) {
         failure(err);
     }];
@@ -67,9 +68,11 @@ static UserModel *sharedLoginUser = nil;
 {
     NSDictionary *params = @{@"email": email, @"password":password, @"school_id": schoolId};
     [UserModel requestWithMethod:RequestMethodTypePost url:@"reg" params:params success:^(AFHttpResult *response) {
-        success(response.jsonObject);
+        
         [DEFAULTS setObject:response.jsonObject forKey:kUserLoginInfo];
         sharedLoginUser = nil;
+        
+        success(response.jsonObject);
     } failure:^(NSError *err) {
         failure(err);
     }];

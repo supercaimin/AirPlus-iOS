@@ -27,7 +27,7 @@
     
     self.view.backgroundColor = [UIColor cloudsColor];
     
-    self.aboutLabel.textColor = [UIColor greenSeaColor];
+    self.aboutLabel.textColor = [UIColor peterRiverColor];
     
     FUIButton *closeButton = [[FUIButton alloc] initWithFrame:CGRectMake(0, 0, 22, 16)];
     closeButton.titleLabel.font = [UIFont iconFontWithSize:20];

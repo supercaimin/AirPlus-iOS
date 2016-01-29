@@ -47,7 +47,7 @@
     self.valueLabel.font = [UIFont boldFlatFontOfSize:40.0];
     self.pm25Label.font = [UIFont flatFontOfSize:14.0];
     self.gradeLabel.font = [UIFont flatFontOfSize:12.0];
-    self.gradeLabel.backgroundColor = [UIColor greenSeaColor];
+    self.gradeLabel.backgroundColor = [UIColor peterRiverColor];
     [self.gradeLabel.layer setCornerRadius:4.0];
     self.gradeLabel.layer.masksToBounds = YES;
     self.gradeLabel.textColor = [UIColor whiteColor];
@@ -63,7 +63,7 @@
         self.gradeLabel.backgroundColor = [UIColor orangeColor];
     }else{
         self.gradeLabel.text = @"GOOD";
-        self.gradeLabel.backgroundColor = [UIColor greenSeaColor];
+        self.gradeLabel.backgroundColor = [UIColor peterRiverColor];
     }
 }
 
@@ -89,7 +89,7 @@
         self.gradeLabel.backgroundColor = [UIColor yellowColor];
     }
     if ([displayStatus isEqualToString:@"green"]) {
-        self.gradeLabel.backgroundColor = [UIColor greenSeaColor];
+        self.gradeLabel.backgroundColor = [UIColor colorWithHexString:@"0x75C83D" alpha:1.0];
     }
     if ([displayStatus isEqualToString:@"red"]) {
         self.gradeLabel.backgroundColor = [UIColor redColor];
@@ -106,13 +106,10 @@
     
     if (x > 200) {
         self.gradeLabel.text = @"BAD";
-        self.gradeLabel.backgroundColor = [UIColor redColor];
     }else if(x > 100){
         self.gradeLabel.text = @"FAIR";
-        self.gradeLabel.backgroundColor = [UIColor orangeColor];
     }else{
         self.gradeLabel.text = @"GOOD";
-        self.gradeLabel.backgroundColor = [UIColor greenSeaColor];
     }
 
 }

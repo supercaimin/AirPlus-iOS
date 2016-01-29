@@ -96,7 +96,7 @@
         self.statusLabel.backgroundColor = [UIColor yellowColor];
     }
     if ([displayStatus isEqualToString:@"green"]) {
-        self.statusLabel.backgroundColor = [UIColor greenSeaColor];
+        self.statusLabel.backgroundColor = [UIColor colorWithHexString:@"0x75C83D" alpha:1.0];
     }
     if ([displayStatus isEqualToString:@"red"]) {
         self.statusLabel.backgroundColor = [UIColor redColor];
@@ -113,13 +113,10 @@
     
     if (xx > 200) {
         self.statusLabel.text = @"BAD";
-        self.statusLabel.backgroundColor = [UIColor redColor];
     }else if(xx > 100){
         self.statusLabel.text = @"FAIR";
-        self.statusLabel.backgroundColor = [UIColor orangeColor];
     }else{
         self.statusLabel.text = @"GOOD";
-        self.statusLabel.backgroundColor = [UIColor greenSeaColor];
     }
     [self parse24hIndoor:datas];
     self.pm25s = outPM25s;
@@ -150,14 +147,14 @@
 - (void)_setupExampleGraph {
     
     self.graph.backgroundColor = [UIColor cloudsColor];
-    
+    self.graph.opaque = NO;
     self.graph.dataSource = self;
     self.graph.lineWidth = 1.0;
     
     self.graph.startFromZero = YES;
     
     self.graph.valueLabelCount = 6;
-    
+        
     [self.graph draw];
 }
 
@@ -170,7 +167,7 @@
 
 - (UIColor *)colorForLineAtIndex:(NSInteger)index {
     id colors = @[[UIColor wisteriaColor],
-                  [UIColor greenSeaColor]
+                  [UIColor peterRiverColor]
                   ];
     return [colors objectAtIndex:index];
 }

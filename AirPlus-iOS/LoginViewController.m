@@ -46,7 +46,6 @@
     
     [closeButton addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:closeButton];
-    
     self.emailTextField.font = [UIFont flatFontOfSize:20];
     [self.emailTextField setTextFieldColor:[UIColor cloudsColor]];
     [ self.emailTextField setBorderColor:[UIColor asbestosColor]];
@@ -62,8 +61,8 @@
     [ self.passwordTextField setTextColor:[UIColor midnightBlueColor]];
     
     self.loginButton.titleLabel.font = [UIFont flatFontOfSize:20];
-    self.loginButton.buttonColor = [UIColor turquoiseColor];
-    self.loginButton.shadowColor = [UIColor greenSeaColor];
+    self.loginButton.buttonColor = [UIColor peterRiverColor];
+    self.loginButton.shadowColor = [UIColor peterRiverColor];
     self.loginButton.shadowHeight = 3.0f;
     self.loginButton.cornerRadius = 6.0f;
     

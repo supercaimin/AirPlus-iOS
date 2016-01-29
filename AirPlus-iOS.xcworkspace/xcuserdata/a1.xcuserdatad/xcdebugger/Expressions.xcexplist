@@ -3,6 +3,23 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "__52+[SchoolModel getSchoolsWithCityId:success:failure:]_block_invoke18:SchoolModel.m">
+      </ContextState>
+      <ContextState
+         contextName = "__59+[AFHttpTool requestWithMethod:url:params:success:failure:]_block_invoke:AFHttpTool.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[PMDetailsView _setupExampleGraph]:PMDetailsView.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.statusLabel">
+            </PersistentString>
+            <PersistentString
+               value = "self.graph">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "-[GKLineGraph _maxValue]:GKLineGraph.m">
          <PersistentStrings>
             <PersistentString
@@ -11,15 +28,23 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "__58+[ModelBase requestWithMethod:url:params:success:failure:]_block_invoke50:ModelBase.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "__60+[InstrumentModel getInstrumentsWithUserId:success:failure:]_block_invoke_2:InstrumentModel.m">
+      </ContextState>
+      <ContextState
          contextName = "-[MainViewController numberOfSectionsInTableView:]:MainViewController.m">
          <PersistentStrings>
             <PersistentString
                value = "self.instruments">
             </PersistentString>
          </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "__59+[AFHttpTool requestWithMethod:url:params:success:failure:]_block_invoke:AFHttpTool.m">
       </ContextState>
       <ContextState
          contextName = "__58+[ModelBase requestWithMethod:url:params:success:failure:]_block_invoke61:ModelBase.m">
@@ -33,15 +58,23 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "__58+[ModelBase requestWithMethod:url:params:success:failure:]_block_invoke50:ModelBase.m">
+         contextName = "-[PMDetailsView valuesForLineAtIndex:]:PMDetailsView.m">
          <PersistentStrings>
             <PersistentString
-               value = "">
+               value = "self.pm25s">
+            </PersistentString>
+            <PersistentString
+               value = "self.pms">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "__52+[SchoolModel getSchoolsWithCityId:success:failure:]_block_invoke18:SchoolModel.m">
+         contextName = "-[MainViewController reload]:MainViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "[UserModel sharedLoginUser].uid">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "__33-[PM25ViewController viewDidLoad]_block_invoke_2:PM25ViewController.m">
@@ -50,9 +83,6 @@
                value = "self.pm24Str">
             </PersistentString>
          </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "__60+[InstrumentModel getInstrumentsWithUserId:success:failure:]_block_invoke_2:InstrumentModel.m">
       </ContextState>
    </ContextStates>
 </VariablesViewState>

@@ -55,7 +55,7 @@
     UIView *buttomToolbar = [[UIView alloc] initWithFrame:
                             
                             CGRectMake(0.0f, SCREEN_HEIGHT - 44.0f, 320.0f, 44.0f)];
-    buttomToolbar.backgroundColor = RGBA(0x16, 0xa0, 0x85, 0.5);
+    buttomToolbar.backgroundColor = RGBA(0x34, 0x98, 0xDB, 0.5);
     self.addLabel = [[UILabel alloc] initWithFrame:CGRectMake(100, 2, 200, 40)];
     self.addLabel.font = [UIFont iconFontWithSize:16.0];
     self.addLabel.textColor = [UIColor cloudsColor];
@@ -134,7 +134,7 @@
 - (void) viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    [self.navigationController.navigationBar setBackgroundImage:[UIColor imageWithColor:[UIColor greenSeaColor]]
+    [self.navigationController.navigationBar setBackgroundImage:[UIColor imageWithColor:[UIColor peterRiverColor]]
                                                   forBarMetrics:UIBarMetricsDefault];
     self.navigationController.navigationBar.translucent = NO;
     

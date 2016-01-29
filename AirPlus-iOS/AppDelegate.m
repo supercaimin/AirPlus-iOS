@@ -52,7 +52,7 @@
                                       cornerRadius:3
                                    whenContainedIn:[UINavigationBar class], nil];
     
-    [[UINavigationBar appearance] configureFlatNavigationBarWithColor:[UIColor greenSeaColor]];
+    [[UINavigationBar appearance] configureFlatNavigationBarWithColor:[UIColor peterRiverColor]];
     if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
         [UINavigationBar appearance].titleTextAttributes = @{NSFontAttributeName:[UIFont boldFlatFontOfSize:18],
                                                                         NSForegroundColorAttributeName: [UIColor whiteColor]};
@@ -62,7 +62,7 @@
                                                                         UITextAttributeTextColor: [UIColor whiteColor]};
     }
     
-    [[UINavigationBar appearance] configureFlatNavigationBarWithColor:[UIColor greenSeaColor]];
+    [[UINavigationBar appearance] configureFlatNavigationBarWithColor:[UIColor peterRiverColor]];
 
     
 }

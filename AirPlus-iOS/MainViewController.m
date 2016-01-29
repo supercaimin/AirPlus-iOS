@@ -134,10 +134,10 @@
                         [UIImage imageNamed:@"logout"],//注销
                         ];
     NSArray *colors = @[
-                        [UIColor greenSeaColor],
-                        [UIColor greenSeaColor],
-                        [UIColor greenSeaColor],
-                        [UIColor greenSeaColor],
+                        [UIColor peterRiverColor],
+                        [UIColor peterRiverColor],
+                        [UIColor peterRiverColor],
+                        [UIColor peterRiverColor],
                         ];
     
     RNFrostedSidebar *callout = [[RNFrostedSidebar alloc] initWithImages:images selectedIndices:self.optionIndices borderColors:colors];
@@ -238,8 +238,8 @@
         
         FUIButton *addButton = [[FUIButton alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH - 40, 90)];
         addButton.titleLabel.font = [UIFont iconFontWithSize:40];
-        addButton.buttonColor = RGBA(0x16, 0xa0, 0x85, 0.8);
-        addButton.shadowColor = RGBA(0x16, 0xa0, 0x85, 0.8);
+        addButton.buttonColor = [UIColor peterRiverColor];
+        addButton.shadowColor = [UIColor peterRiverColor];
         addButton.shadowHeight = 0.0f;
         addButton.cornerRadius = 0.0f;
         
@@ -283,7 +283,7 @@
     UIRectCorner corners = 0;
     PMItemCell *cell = [PMItemCell PMItemCellWithTableView:tableView];
     [cell configureFlatCellWithColor:[UIColor cloudsColor]
-                       selectedColor:[UIColor greenSeaColor]
+                       selectedColor:[UIColor peterRiverColor]
                      roundingCorners:corners];
     InstrumentModel *instrument = [self.instruments objectAtIndex:indexPath.section];
     [cell configureWithData:instrument.pm location:instrument.name school:instrument.schoolName];
@@ -341,7 +341,7 @@
     alertView.messageLabel.textColor = [UIColor cloudsColor];
     alertView.messageLabel.font = [UIFont flatFontOfSize:14];
     alertView.backgroundOverlay.backgroundColor = [[UIColor cloudsColor] colorWithAlphaComponent:0.8];
-    alertView.alertContainer.backgroundColor = [UIColor greenSeaColor];
+    alertView.alertContainer.backgroundColor = [UIColor peterRiverColor];
     alertView.defaultButtonColor = [UIColor cloudsColor];
     alertView.defaultButtonShadowColor = [UIColor asbestosColor];
     alertView.defaultButtonFont = [UIFont boldFlatFontOfSize:16];
@@ -361,7 +361,7 @@
     alertView.messageLabel.textColor = [UIColor cloudsColor];
     alertView.messageLabel.font = [UIFont flatFontOfSize:14];
     alertView.backgroundOverlay.backgroundColor = [[UIColor cloudsColor] colorWithAlphaComponent:0.8];
-    alertView.alertContainer.backgroundColor = [UIColor greenSeaColor];
+    alertView.alertContainer.backgroundColor = [UIColor peterRiverColor];
     alertView.defaultButtonColor = [UIColor cloudsColor];
     alertView.defaultButtonShadowColor = [UIColor asbestosColor];
     alertView.defaultButtonFont = [UIFont boldFlatFontOfSize:16];
