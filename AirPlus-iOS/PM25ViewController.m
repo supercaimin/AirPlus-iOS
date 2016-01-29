@@ -25,6 +25,8 @@
 
 @property (strong, nonatomic) PMDetailsView *pmContentView;
 
+@property (strong, nonatomic) SchoolModel *school;
+
 @property (strong, nonatomic) NSArray *outPM25s;
 
 
@@ -49,7 +51,6 @@
     
     [closeButton addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:closeButton];
-    self.animatedImagesView.dataSource = self;
     
     UIView *buttomToolbar = [[UIView alloc] initWithFrame:
                             
@@ -108,8 +109,15 @@
         [self.pmContentView loadWithData:self.pms outPM25s:self.outPM25s];
 
     }];
+    self.animatedImagesView.dataSource = self;
 
+    [SchoolModel getSchoolWithId:self.instrument.schoolId success:^(SchoolModel *school) {
+        self.school = school;
+        [self.animatedImagesView reloadData];
 
+    } failure:^(NSError *err) {
+        
+    }];
 }
 
 
@@ -183,12 +191,22 @@
 
 - (NSUInteger)animatedImagesNumberOfImages:(JSAnimatedImagesView *)animatedImagesView
 {
-    return 4;
+    if (!self.school) {
+        return 2;
+    }
+    return self.school.photos.count;
 }
 
 - (UIImage *)animatedImagesView:(JSAnimatedImagesView *)animatedImagesView imageAtIndex:(NSUInteger)index
 {
-    return [UIImage imageNamed:[NSString stringWithFormat:@"tutorial_background_0%lu.jpg", (unsigned long)index]];
+    if (!self.school) {
+        return [[UIImage alloc] init];
+    }
+    NSURL *url = [NSURL URLWithString:[self.school.photos objectAtIndex:index]];
+    
+    UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:url]];
+    
+    return image;
 }
 
 

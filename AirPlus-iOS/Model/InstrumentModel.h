@@ -15,8 +15,10 @@
 @property (strong, nonatomic) NSString *uid;
 @property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) NSString *schoolId;
+@property (strong, nonatomic) NSString *schoolName;
 @property (strong, nonatomic) NSString *serial;
 @property (assign, nonatomic) BOOL isPublic;
+
 @property (strong, nonatomic) NSDictionary *pm;
 
 + (void) getInstrumentsWithSchoolId:(NSString *)schoolId

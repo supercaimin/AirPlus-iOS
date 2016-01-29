@@ -15,5 +15,6 @@
 @property (strong, nonatomic) NSString *src;
 @property (strong, nonatomic) NSString *schoolId;
 
+-(instancetype) initWithJsonObject:(NSDictionary *)jsonDict;
 
 @end

@@ -10,4 +10,17 @@
 
 @implementation PhotoModel
 
+
+-(instancetype) initWithJsonObject:(NSDictionary *)jsonDict
+{
+    self = [super init];
+    if (self) {
+        self.src = [jsonDict objectForKey:@"src"];
+        self.schoolId = [jsonDict objectForKey:@"school_id"];
+        self.uid = [jsonDict objectForKey:@"id"];
+    }
+    
+    
+    return self;
+}
 @end

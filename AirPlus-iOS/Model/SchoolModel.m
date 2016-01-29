@@ -16,11 +16,13 @@
         self.name = [jsonDict objectForKey:@"name"];
         self.cityId = [jsonDict objectForKey:@"city_id"];
         self.uid = [jsonDict objectForKey:@"id"];
+        self.photos = [jsonDict objectForKey:@"images"];
     }
     
     
     return self;
 }
+
 + (void) getSchoolsWithCityId:(NSString *)cityId success:(void (^)(NSArray *schools))success failure:(void (^)(NSError* err))failure{
     [SchoolModel requestWithMethod:RequestMethodTypeGet url:[NSString stringWithFormat:@"get_schools_by_city/%@", cityId] params:nil success:^(AFHttpResult *response) {
         __block NSMutableArray *schoolsObjects = [[NSMutableArray alloc] init];
@@ -31,6 +33,18 @@
         }];
         
         success(schoolsObjects);
+    } failure:^(NSError *err) {
+        failure(err);
+    }];
+}
+
++ (void) getSchoolWithId:(NSString *)uid
+                 success:(void (^)(SchoolModel *school))success
+                 failure:(void (^)(NSError* err))failure
+{
+    [SchoolModel requestWithMethod:RequestMethodTypeGet url:[NSString stringWithFormat:@"get_school/%@", uid] params:nil success:^(AFHttpResult *response) {
+        SchoolModel *school = [[SchoolModel alloc] initWithJsonObject:response.jsonObject];
+        success(school);
     } failure:^(NSError *err) {
         failure(err);
     }];

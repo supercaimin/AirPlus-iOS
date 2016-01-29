@@ -156,7 +156,7 @@ static NSString * const FUITableViewControllerCellReuseIdentifier = @"FUITableVi
     
     if (self.level == APSelectCityLevel) {
         CityModel *city = [self.datas objectAtIndex:indexPath.section];
-        cell.textLabel.text = city.name;
+        cell.textLabel.text = city.key;
     }else if(self.level == APSelectSchoolLevel){
         SchoolModel *school = [self.datas objectAtIndex:indexPath.section];
         cell.textLabel.text = school.name;

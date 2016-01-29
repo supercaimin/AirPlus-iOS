@@ -15,6 +15,16 @@
 @property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) NSString *cityId;
 
-+ (void) getSchoolsWithCityId:(NSString *)cityId success:(void (^)(NSArray *schools))success
-        failure:(void (^)(NSError* err))failure;
+@property (strong, nonatomic) NSArray *photos;
+
++ (void) getSchoolsWithCityId:(NSString *)cityId
+                      success:(void (^)(NSArray *schools))success
+                      failure:(void (^)(NSError* err))failure;
+
++ (void) getSchoolWithId:(NSString *)uid
+                 success:(void (^)(SchoolModel *school))success
+                 failure:(void (^)(NSError* err))failure;
+
+-(instancetype) initWithJsonObject:(NSDictionary *)jsonDict;
+
 @end

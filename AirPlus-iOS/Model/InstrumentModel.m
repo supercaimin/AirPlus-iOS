@@ -16,6 +16,7 @@
     if (self) {
         self.name = [jsonDict objectForKey:@"name"];
         self.schoolId = [jsonDict objectForKey:@"school_id"];
+        self.schoolName = [jsonDict objectForKey:@"school_name"];
         self.uid = [jsonDict objectForKey:@"id"];
         self.serial = [jsonDict objectForKey:@"serial"];
         self.isPublic = [[jsonDict objectForKey:@"is_public"] boolValue];

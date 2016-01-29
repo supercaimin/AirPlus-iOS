@@ -100,8 +100,9 @@
             }
         }
     }];
-    
-    [self.tableView reloadData];
+    if ([AFHttpTool pmDataSyncMananger].pmdatas.count != 0) {
+        [self.tableView reloadData];
+    }
 }
 
 
@@ -285,7 +286,7 @@
                        selectedColor:[UIColor greenSeaColor]
                      roundingCorners:corners];
     InstrumentModel *instrument = [self.instruments objectAtIndex:indexPath.section];
-    [cell configureWithData:instrument.pm location:instrument.name school:instrument.schoolId];
+    [cell configureWithData:instrument.pm location:instrument.name school:instrument.schoolName];
     
     cell.cornerRadius = 0.f; //Optional
     cell.separatorHeight = 2.f;
