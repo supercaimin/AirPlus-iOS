@@ -8,12 +8,12 @@
 
 #import "MainViewController.h"
 
-#import "Constants.h"
 #import "ModelConst.h"
 
 #import "RNFrostedSidebar.h"
 
 #import "PMItemCell.h"
+#import <MJRefresh/MJRefresh.h>
 
 #import "ICETutorialController.h"
 #import "LoginViewController.h"
@@ -103,6 +103,7 @@
     if ([AFHttpTool pmDataSyncMananger].pmdatas.count != 0) {
         [self.tableView reloadData];
     }
+    [self.tableView.header endRefreshing];
 }
 
 
@@ -235,16 +236,17 @@
         _tableView.backgroundView = nil;
         _tableView.showsVerticalScrollIndicator = NO;
         
-        
+        _tableView.header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(refresh)];
+
         FUIButton *addButton = [[FUIButton alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH - 40, 90)];
         addButton.titleLabel.font = [UIFont iconFontWithSize:40];
-        addButton.buttonColor = [UIColor peterRiverColor];
-        addButton.shadowColor = [UIColor peterRiverColor];
+        addButton.buttonColor = [UIColor cloudsColor];
+        addButton.shadowColor = [UIColor cloudsColor];
         addButton.shadowHeight = 0.0f;
         addButton.cornerRadius = 0.0f;
         
         [addButton setTitle:[NSString iconStringForEnum:FUIPlus] forState:UIControlStateNormal];
-        [addButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateNormal];
+        [addButton setTitleColor:[UIColor peterRiverColor] forState:UIControlStateNormal];
         
         [addButton addTarget:self action:@selector(addButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
         
@@ -388,4 +390,10 @@
         }
     }
 }
+
+- (void)refresh
+{
+    [[AFHttpTool pmDataSyncMananger] timerTask];
+}
+
 @end

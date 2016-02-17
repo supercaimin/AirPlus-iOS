@@ -241,9 +241,9 @@ static AFHttpTool *pmDataSyncMananger  = nil;
 - (void)sysdata{
 
     [AFHttpTool syncdata:^(AFHttpResult *response) {
-        self.pmdatas = response.jsonObject;
-        [AFHttpTool cacheWithData:response.jsonObject filename:kPMCacheData];
-        [[NSNotificationCenter defaultCenter] postNotificationName:kPMDataSyncSuccessNotification object:response.jsonObject];
+        self.pmdatas = [response.jsonObject objectForKey:@"data"];
+        [AFHttpTool cacheWithData:self.pmdatas filename:kPMCacheData];
+        [[NSNotificationCenter defaultCenter] postNotificationName:kPMDataSyncSuccessNotification object:self.pmdatas];
     } failure:^(NSError *err, NSString *responseString) {
         
     }];
@@ -258,11 +258,7 @@ static AFHttpTool *pmDataSyncMananger  = nil;
 
 - (void) timerTask
 {
-    [AFHttpTool login:^(AFHttpResult *response) {
-        [self performSelector:@selector(sysdata) withObject:nil afterDelay:1.0];
-    } failure:^(NSError *err, NSString *responseString) {
-        [self performSelector:@selector(sysdata) withObject:nil afterDelay:1.0];
-    }];
+    [self sysdata];
 }
 
 - (NSArray *) getpmdatasWithSerial:(NSString *)serial

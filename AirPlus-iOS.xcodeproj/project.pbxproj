@@ -79,7 +79,6 @@
 		6304704F1C4881690064D81C /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		630470541C4881690064D81C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		630470591C4881690064D81C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		630470621C4895D90064D81C /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		630470631C489D1C0064D81C /* burger.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = burger.png; sourceTree = "<group>"; };
 		630470641C489D1C0064D81C /* burger@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "burger@2x.png"; sourceTree = "<group>"; };
 		630470651C489D1C0064D81C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -122,6 +121,7 @@
 		6312F4851C54B2E70021C959 /* AFHttpResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHttpResult.m; sourceTree = "<group>"; };
 		6312F4861C54B2E70021C959 /* AFHttpTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHttpTool.h; sourceTree = "<group>"; };
 		6312F4871C54B2E70021C959 /* AFHttpTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHttpTool.m; sourceTree = "<group>"; };
+		634722851C744DD60066B79E /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		6377685F1C5866C300E39B91 /* tutorial_background_00.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tutorial_background_00.jpg; sourceTree = "<group>"; };
 		637768601C5866C300E39B91 /* tutorial_background_01.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tutorial_background_01.jpg; sourceTree = "<group>"; };
 		637768611C5866C300E39B91 /* tutorial_background_02.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tutorial_background_02.jpg; sourceTree = "<group>"; };
@@ -269,13 +269,13 @@
 		630470611C4895D90064D81C /* Utilitys */ = {
 			isa = PBXGroup;
 			children = (
+				634722851C744DD60066B79E /* Constants.h */,
 				63F689C81C5A184E00F9F755 /* Utility.h */,
 				63F689C91C5A184E00F9F755 /* Utility.m */,
 				6304707D1C489ED40064D81C /* UIColor+RCColor.h */,
 				6304707E1C489ED40064D81C /* UIColor+RCColor.m */,
 				6304707F1C489ED40064D81C /* UIImage+RCImage.h */,
 				630470801C489ED40064D81C /* UIImage+RCImage.m */,
-				630470621C4895D90064D81C /* Constants.h */,
 			);
 			path = Utilitys;
 			sourceTree = "<group>";
@@ -404,7 +404,7 @@
 				TargetAttributes = {
 					630470441C4881690064D81C = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = M8443SG6MX;
+						DevelopmentTeam = QV57Y5LTKH;
 					};
 				};
 			};
@@ -639,14 +639,14 @@
 			baseConfigurationReference = 92E6B2C2D7DBEBEF485BBEC3 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Nanjing Homecaught Facility Engineering Equipment Co., Ltd. (QV57Y5LTKH)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Nanjing Homecaught Facility Engineering Equipment Co., Ltd. (QV57Y5LTKH)";
 				INFOPLIST_FILE = "AirPlus-iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "net.appbees.AirPlus-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = cn.homecaught.AirPlus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "f95ee0c2-d4bc-4cc9-9978-56211aa77c16";
+				PROVISIONING_PROFILE = "e6eb9c3c-1ffc-409b-9169-36a45012bc8f";
 			};
 			name = Debug;
 		};
@@ -655,14 +655,14 @@
 			baseConfigurationReference = 43ACB4255EB7601F86FAAF56 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Nanjing Homecaught Facility Engineering Equipment Co., Ltd. (QV57Y5LTKH)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Nanjing Homecaught Facility Engineering Equipment Co., Ltd. (QV57Y5LTKH)";
 				INFOPLIST_FILE = "AirPlus-iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "net.appbees.AirPlus-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = cn.homecaught.AirPlus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "f95ee0c2-d4bc-4cc9-9978-56211aa77c16";
+				PROVISIONING_PROFILE = "e6eb9c3c-1ffc-409b-9169-36a45012bc8f";
 			};
 			name = Release;
 		};

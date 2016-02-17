@@ -89,35 +89,35 @@
     self.xLabel.text = [NSString stringWithFormat:@"%.1fx", x];
     
     NSString *displayStatus = [[datas lastObject] objectForKey:@"displayStatus"];
+    
     if ([displayStatus isEqualToString:@"orange"]) {
         self.statusLabel.backgroundColor = [UIColor orangeColor];
+        self.statusLabel.text = @"Light polluted";
     }
     if ([displayStatus isEqualToString:@"yellow"]) {
         self.statusLabel.backgroundColor = [UIColor yellowColor];
+        self.statusLabel.text = @"Moderate";
     }
     if ([displayStatus isEqualToString:@"green"]) {
         self.statusLabel.backgroundColor = [UIColor colorWithHexString:@"0x75C83D" alpha:1.0];
+        self.statusLabel.text = @"Good";
     }
     if ([displayStatus isEqualToString:@"red"]) {
         self.statusLabel.backgroundColor = [UIColor redColor];
+        self.statusLabel.text = @"Unhealthy";
     }
     if ([displayStatus isEqualToString:@"purple"]) {
         self.statusLabel.backgroundColor = [UIColor purpleColor];
+        self.statusLabel.text = @"Very Unhealthy";
     }
     if ([displayStatus isEqualToString:@"maroon"]) {
         self.statusLabel.backgroundColor = [UIColor magentaColor];
+        self.statusLabel.text = @"Hazardous";
     }
     
+    CGSize labelsize = [self.statusLabel.text sizeWithFont:self.statusLabel.font constrainedToSize:CGSizeMake(320,2000) lineBreakMode:UILineBreakModeWordWrap];
     
-    int xx = [self.pmValueLabel.text integerValue];
-    
-    if (xx > 200) {
-        self.statusLabel.text = @"BAD";
-    }else if(xx > 100){
-        self.statusLabel.text = @"FAIR";
-    }else{
-        self.statusLabel.text = @"GOOD";
-    }
+    self.statusLabel.frame = CGRectMake(self.statusLabel.frame.origin.x, self.statusLabel.frame.origin.y, labelsize.width + 10.0, self.statusLabel.frame.size.height);
     [self parse24hIndoor:datas];
     self.pm25s = outPM25s;
     [self _setupExampleGraph];

@@ -83,7 +83,7 @@
 #define BASE_URL        @"http://139.196.40.169/"
 
 #define PMWEB_LOGIN     @"http://139.196.40.169:8080/pmweb/login_check"
-#define PMWEB_DATA      @"http://139.196.40.169:8080/pmweb/data/getJson"
+#define PMWEB_DATA      @"http://139.196.40.169/api/index/get_pm"
 
 #define OUTDOOR_DATA    @"http://www.pm25.com/city/nanjing.html"
 

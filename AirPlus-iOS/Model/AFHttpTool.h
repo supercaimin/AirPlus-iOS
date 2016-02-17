@@ -60,6 +60,7 @@
 - (void) start;
 
 - (NSArray *) getpmdatasWithSerial:(NSString *)serial;
+- (void) timerTask;
 
 @property (nonatomic, strong) NSArray *pmdatas;
 
