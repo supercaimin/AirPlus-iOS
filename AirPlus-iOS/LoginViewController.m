@@ -31,7 +31,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = @"Login";
+    self.title = @"Sign in";
     
     self.view.backgroundColor = [UIColor cloudsColor];
     

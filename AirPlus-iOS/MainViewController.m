@@ -44,7 +44,7 @@
     [super viewDidLoad];
     
     
-    self.title = @"Air Plus";
+    self.title = @"AirPlus";
     
     self.optionIndices = [NSMutableIndexSet indexSetWithIndex:0];
     
@@ -353,7 +353,7 @@
 
 - (void) showLogoutConfirm
 {
-    FUIAlertView *alertView = [[FUIAlertView alloc] initWithTitle:@"Logout?" message:@"注销后以便重新登陆" delegate:nil cancelButtonTitle:@"NO" otherButtonTitles:@"YES", nil];
+    FUIAlertView *alertView = [[FUIAlertView alloc] initWithTitle:@"Sign out?" message:@"注销后以便重新登陆" delegate:nil cancelButtonTitle:@"NO" otherButtonTitles:@"YES", nil];
     alertView.alertViewStyle = FUIAlertViewStyleDefault;
     alertView.tag = 101;
 

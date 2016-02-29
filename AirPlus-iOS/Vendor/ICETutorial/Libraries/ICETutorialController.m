@@ -116,8 +116,8 @@
     
     [self.rightButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateNormal];
     
-    [self.leftButton setTitle:@"Login" forState:UIControlStateNormal];
-    [self.rightButton setTitle:@"Register" forState:UIControlStateNormal];
+    [self.leftButton setTitle:@"SIGN IN" forState:UIControlStateNormal];
+    [self.rightButton setTitle:@"SIGN UP" forState:UIControlStateNormal];
     [self.leftButton addTarget:self
                         action:@selector(didClickOnButton1:)
               forControlEvents:UIControlEventTouchUpInside];
@@ -284,7 +284,7 @@
 // Setup the Title Label.
 - (void)setOverlayTitle {
     // ...or change by an UIImageView if you need it.
-    [self.overlayTitle setText:@"Air Plus"];
+    [self.overlayTitle setText:@"AirPlus"];
 }
 
 // Setup the Title/Subtitle style/text.

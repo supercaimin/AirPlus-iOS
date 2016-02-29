@@ -65,7 +65,11 @@
 {
     self.deviceLabel.text = location;
     self.locationLabel.text = school;
-    self.timeLabel.text = [pm objectForKey:@"readingDate"];
+    NSString *time = [pm objectForKey:@"readingDate"];
+    time = [time stringByReplacingOccurrencesOfString:@"上午" withString:@"AM"];
+    time = [time stringByReplacingOccurrencesOfString:@"下午" withString:@"PM"];
+    self.timeLabel.text = time;
+
     self.valueLabel.text = [pm objectForKey:@"reading"];
     
     NSString *displayStatus = [pm objectForKey:@"displayStatus"];
@@ -93,11 +97,10 @@
         self.gradeLabel.backgroundColor = [UIColor magentaColor];
         self.gradeLabel.text = @"Hazardous";
     }
-    self.gradeLabel.text = @"Very Unhealthy";
 
     CGSize labelsize = [self.gradeLabel.text sizeWithFont:self.gradeLabel.font constrainedToSize:CGSizeMake(320,2000) lineBreakMode:UILineBreakModeWordWrap];
     
-    self.gradeLabel.frame = CGRectMake(320 - labelsize.width - 20, self.gradeLabel.frame.origin.y, labelsize.width + 10.0, self.gradeLabel.frame.size.height);
+    self.gradeLabel.frame = CGRectMake(320 - labelsize.width - 30, self.gradeLabel.frame.origin.y, labelsize.width + 10.0, self.gradeLabel.frame.size.height);
 
 }
 @end

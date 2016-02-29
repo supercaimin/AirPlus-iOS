@@ -35,7 +35,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = @"Register";
+    self.title = @"Sign up";
     
     self.view.backgroundColor = [UIColor cloudsColor];
     
@@ -88,6 +88,7 @@
 }
 
 
+
 - (IBAction)finishButtonPressed:(id)sender {
     
     if (![Utility isEmailAddress:self.emailTextField.text]) {
@@ -104,6 +105,7 @@
         [Utility showMessage:@"Entered passwords differ."];
         return;
     }
+
     [UserModel register:self.emailTextField.text password:self.passwordTextField.text schoolId:self.school.uid success:^(UserModel *user) {
         [[NSNotificationCenter defaultCenter] postNotificationName:kRegisterDidFinished object:nil];
 
@@ -111,6 +113,9 @@
             self.navigationController.view.alpha = 0.0;
         } completion:^(BOOL finished) {
             [self.navigationController.view removeFromSuperview];
+            
+            [Utility showMessage:@"Thank you for sign up with AirPlus."];
+
         }];
     } failure:^(NSError *err) {
         if (err == nil) {

@@ -12,6 +12,9 @@
 
 #import "ModelConst.h"
 
+#import "Utility.h"
+
+
 #import "ICETutorialController.h"
 
 #import "RegisterViewController.h"
@@ -24,6 +27,7 @@ static NSString * const FUITableViewControllerCellReuseIdentifier = @"FUITableVi
 @interface SelectViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) UILabel *tipLabel;
 
 @property (nonatomic, strong) NSArray *datas;
 
@@ -33,13 +37,17 @@ static NSString * const FUITableViewControllerCellReuseIdentifier = @"FUITableVi
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self tableView];
     
     if (self.level == APSelectCityLevel) {
         self.title = @"Select City";
+        self.tipLabel.text = @"  Please choose your city.";
     }else if(self.level == APSelectSchoolLevel){
         self.title = @"Select School";
+        self.tipLabel.text = @"  Please choose your school.";
     }else{
-        self.title = @"Select a Device";
+        self.title = @"Select Device";
+        self.tipLabel.text = @"  Please choose one or all locations for PM2.5 datas.";
     }
     
     self.view.backgroundColor = [UIColor cloudsColor];
@@ -86,6 +94,13 @@ static NSString * const FUITableViewControllerCellReuseIdentifier = @"FUITableVi
     }
     
 }
+- (void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    if (self.type == APSelectRegisterType) {
+        [Utility showMessage:@"Welcome to sign up with AirPlus."];
+    }
+}
 
 - (void) viewWillAppear:(BOOL)animated
 {
@@ -110,7 +125,10 @@ static NSString * const FUITableViewControllerCellReuseIdentifier = @"FUITableVi
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.separatorColor = [UIColor clearColor];
-        
+        _tipLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 30)];
+        _tipLabel.font = [UIFont systemFontOfSize:12.0];
+        _tipLabel.textColor = [UIColor grayColor];
+        _tableView.tableHeaderView = _tipLabel;
         //Set the background color
         _tableView.backgroundColor = [UIColor cloudsColor];
         _tableView.backgroundView = nil;
