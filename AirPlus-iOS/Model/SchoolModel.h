@@ -14,6 +14,7 @@
 @property (strong, nonatomic) NSString *uid;
 @property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) NSString *cityId;
+@property (strong, nonatomic) NSString *logo;
 
 @property (strong, nonatomic) NSArray *photos;
 

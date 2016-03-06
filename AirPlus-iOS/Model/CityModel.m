@@ -17,6 +17,7 @@
         self.name = [jsonDict objectForKey:@"city_name"];
         self.key = [jsonDict objectForKey:@"city_key"];
         self.uid = [jsonDict objectForKey:@"id"];
+        self.logo = [jsonDict objectForKey:@"logo"];
     }
     
     

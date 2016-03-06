@@ -56,13 +56,14 @@
                             
                             CGRectMake(0.0f, SCREEN_HEIGHT - 44.0f, 320.0f, 44.0f)];
     buttomToolbar.backgroundColor = RGBA(0x34, 0x98, 0xDB, 0.5);
-    self.addLabel = [[UILabel alloc] initWithFrame:CGRectMake(100, 2, 200, 40)];
+    self.addLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 2, 320, 40)];
     self.addLabel.font = [UIFont iconFontWithSize:16.0];
+    self.addLabel.textAlignment = NSTextAlignmentCenter;
     self.addLabel.textColor = [UIColor cloudsColor];
     if ([[UserModel sharedLoginUser] isContainInstruments:self.instrument]) {
-        self.addLabel.text =[NSString stringWithFormat:@"%@Remove From Home", [NSString iconStringForEnum:FUICross]];
+        self.addLabel.text =[NSString stringWithFormat:@"%@REMOVE FROM HOME", [NSString iconStringForEnum:FUICross]];
     }else{
-        self.addLabel.text =[NSString stringWithFormat:@"%@Add To Home", [NSString iconStringForEnum:FUIPlus]];
+        self.addLabel.text =[NSString stringWithFormat:@"%@ADD TO HOME", [NSString iconStringForEnum:FUIPlus]];
     }
     
     self.addLabel.userInteractionEnabled=YES;
@@ -145,18 +146,18 @@
 {
     if ([[UserModel sharedLoginUser] isContainInstruments:self.instrument]) {
         [InstrumentModel delUserInstrument:[UserModel sharedLoginUser].uid instrumentId:self.instrument.uid success:^{
-            self.addLabel.text =[NSString stringWithFormat:@"%@Add To Home", [NSString iconStringForEnum:FUIPlus]];
+            self.addLabel.text =[NSString stringWithFormat:@"%@ADD TO HOME", [NSString iconStringForEnum:FUIPlus]];
             [[NSNotificationCenter defaultCenter] postNotificationName:kReloadNeed object:nil];
         } failure:^(NSError *err) {
-            self.addLabel.text =[NSString stringWithFormat:@"%@Add To Home", [NSString iconStringForEnum:FUIPlus]];
+            self.addLabel.text =[NSString stringWithFormat:@"%@ADD TO HOME", [NSString iconStringForEnum:FUIPlus]];
             [[NSNotificationCenter defaultCenter] postNotificationName:kReloadNeed object:nil];
         }];
     }else{
         [InstrumentModel addUserInstrument:[UserModel sharedLoginUser].uid instrumentId:self.instrument.uid success:^{
-            self.addLabel.text =[NSString stringWithFormat:@"%@Remove From Home", [NSString iconStringForEnum:FUICross]];
+            self.addLabel.text =[NSString stringWithFormat:@"%@REMOVE FROM HOME", [NSString iconStringForEnum:FUICross]];
             [[NSNotificationCenter defaultCenter] postNotificationName:kReloadNeed object:nil];
         } failure:^(NSError *err) {
-            self.addLabel.text =[NSString stringWithFormat:@"%@Remove From Home", [NSString iconStringForEnum:FUICross]];
+            self.addLabel.text =[NSString stringWithFormat:@"%@REMOVE FROM HOME", [NSString iconStringForEnum:FUICross]];
             [[NSNotificationCenter defaultCenter] postNotificationName:kReloadNeed object:nil];
         }];
     

@@ -78,6 +78,10 @@
     self.statusLabel.layer.masksToBounds = YES;
     
     [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(reset) userInfo:nil repeats:YES];
+    self.pmValueLabel.hidden = YES;
+    self.statusLabel.hidden = YES;
+    self.xLabel.hidden = YES;
+    self.outdoorPMLabel.hidden = YES;
 
 }
 
@@ -121,6 +125,11 @@
     [self parse24hIndoor:datas];
     self.pm25s = outPM25s;
     [self _setupExampleGraph];
+    
+    self.pmValueLabel.hidden = NO;
+    self.statusLabel.hidden = NO;
+    self.xLabel.hidden = NO;
+    self.outdoorPMLabel.hidden = NO;
 }
 
 - (void) parse24hIndoor:(NSArray *)datas

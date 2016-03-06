@@ -14,6 +14,8 @@
 
 #import "Utility.h"
 
+#import <SDWebImage/UIImageView+WebCache.h>
+
 
 #import "ICETutorialController.h"
 
@@ -175,9 +177,12 @@ static NSString * const FUITableViewControllerCellReuseIdentifier = @"FUITableVi
     if (self.level == APSelectCityLevel) {
         CityModel *city = [self.datas objectAtIndex:indexPath.section];
         cell.textLabel.text = city.key;
+        [cell.imageView sd_setImageWithURL:[NSURL URLWithString:city.logo]];
     }else if(self.level == APSelectSchoolLevel){
         SchoolModel *school = [self.datas objectAtIndex:indexPath.section];
         cell.textLabel.text = school.name;
+        [cell.imageView sd_setImageWithURL:[NSURL URLWithString:school.logo]];
+
     }else{
         InstrumentModel *instrument = [self.datas objectAtIndex:indexPath.section];
 

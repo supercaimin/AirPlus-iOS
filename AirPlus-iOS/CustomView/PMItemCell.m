@@ -78,7 +78,7 @@
         self.gradeLabel.text = @"Light polluted";
     }
     if ([displayStatus isEqualToString:@"yellow"]) {
-        self.gradeLabel.backgroundColor = [UIColor yellowColor];
+        self.gradeLabel.backgroundColor = [UIColor colorWithHexString:@"0xffbb33" alpha:1.0];
         self.gradeLabel.text = @"Moderate";
     }
     if ([displayStatus isEqualToString:@"green"]) {
