@@ -405,6 +405,11 @@
 					630470441C4881690064D81C = {
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = QV57Y5LTKH;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -639,7 +644,7 @@
 			baseConfigurationReference = 92E6B2C2D7DBEBEF485BBEC3 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: hanwang221@gmail.com (639FW7948D)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "AirPlus-iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -655,7 +660,7 @@
 			baseConfigurationReference = 43ACB4255EB7601F86FAAF56 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: hanwang221@gmail.com (639FW7948D)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "AirPlus-iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;

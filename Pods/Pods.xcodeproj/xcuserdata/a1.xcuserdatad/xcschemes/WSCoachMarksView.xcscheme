@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'A177799702A738A57C4D8CC5'
+               BlueprintIdentifier = 'ECB27C17C6C78A29C56B02ED'
                BlueprintName = 'WSCoachMarksView'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libWSCoachMarksView.a'>

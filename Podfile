@@ -15,3 +15,5 @@ pod 'UIImage+RTTint'
 pod 'FlatUIKit'
 pod 'JSAnimatedImagesView'
 pod 'GraphKit'
+pod 'AVOSCloud'
+

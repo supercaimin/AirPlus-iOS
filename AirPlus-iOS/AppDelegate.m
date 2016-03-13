@@ -11,6 +11,7 @@
 #import "MainViewController.h"
 
 #import "Constants.h"
+#import <AVOSCloud/AVOSCloud.h>
 
 @interface AppDelegate ()
 
@@ -32,6 +33,24 @@
     [self.window makeKeyAndVisible];
     
     [[AFHttpTool pmDataSyncMananger] start];
+    [AVOSCloud setApplicationId:@"pcjGycRPevcwWdRWbMv9VznJ-gzGzoHsz"
+                      clientKey:@"iQQnBfSp2q3XnN2qBnTpJeJu"];
+    if ([[UIDevice currentDevice].systemVersion floatValue] < 8.0) {
+        UIRemoteNotificationType types = UIRemoteNotificationTypeBadge |
+        UIRemoteNotificationTypeAlert |
+        UIRemoteNotificationTypeSound;
+        [application registerForRemoteNotificationTypes:types];
+    } else {
+        UIUserNotificationType types = UIUserNotificationTypeAlert |
+        UIUserNotificationTypeBadge |
+        UIUserNotificationTypeSound;
+        
+        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:types categories:nil];
+        
+        [application registerUserNotificationSettings:settings];
+        [application registerForRemoteNotifications];
+    }
+    
     return YES;
 }
 
@@ -86,6 +105,13 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (void)application:(UIApplication *)app didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    AVInstallation *currentInstallation = [AVInstallation currentInstallation];
+    [currentInstallation setDeviceTokenFromData:deviceToken];
+    [currentInstallation saveInBackground];
+    NSString *installationId = currentInstallation.installationId;
 }
 
 @end

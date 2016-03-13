@@ -20,6 +20,7 @@ PODS:
   - AFNetworking/UIKit (2.6.3):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - AVOSCloud (3.2.7)
   - Base64nl (1.2)
   - BlurImageProcessor (1.0.0)
   - FlatUIKit (1.6.2)
@@ -45,6 +46,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 2.6.3)
+  - AVOSCloud
   - Base64nl
   - BlurImageProcessor
   - FlatUIKit
@@ -62,6 +64,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
+  AVOSCloud: 957d1508104d7c8ed501df9d9b734d7a98c2e047
   Base64nl: a497bdcd1c01ea793d36b399016195a8713c0e95
   BlurImageProcessor: a4794ad3128748dbff8b40ae43ce9386d3667bba
   FlatUIKit: 1b41f0d4952ce8d970d8479ce79df54a960242c4
