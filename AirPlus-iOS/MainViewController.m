@@ -385,6 +385,11 @@
     
     if (alertView.tag == 101) {
         if (buttonIndex == 1) {
+            [UserModel setInstallationId:[UserModel sharedLoginUser].uid installationId:@"" success:^(UserModel *user) {
+                
+            } failure:^(NSError *err) {
+                
+            }];
             [DEFAULTS setObject:nil forKey:kUserLoginInfo];
             [self showTutorialView];
         }

@@ -23,6 +23,8 @@
 
 #import "PM25ViewController.h"
 
+#import "SelectCell.h"
+
 static NSString * const FUITableViewControllerCellReuseIdentifier = @"FUITableViewControllerCellReuseIdentifier";
 
 
@@ -164,39 +166,19 @@ static NSString * const FUITableViewControllerCellReuseIdentifier = @"FUITableVi
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UIRectCorner corners = 0;
-    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:FUITableViewControllerCellReuseIdentifier];
-    [cell configureFlatCellWithColor:[UIColor cloudsColor]
-                       selectedColor:[UIColor peterRiverColor]
-                     roundingCorners:corners];
-    cell.textLabel.textColor = [UIColor blackColor];
-    
-    cell.textLabel.font = [UIFont flatFontOfSize:17.0];
-    cell.cornerRadius = 0.f;
+    SelectCell *cell = [SelectCell selectCellWithTableView:tableView];
     
     if (self.level == APSelectCityLevel) {
         CityModel *city = [self.datas objectAtIndex:indexPath.section];
-        cell.textLabel.text = city.key;
-        [cell.imageView sd_setImageWithURL:[NSURL URLWithString:city.logo]];
+        [cell configure:city.logo name:city.key];
     }else if(self.level == APSelectSchoolLevel){
         SchoolModel *school = [self.datas objectAtIndex:indexPath.section];
-        cell.textLabel.text = school.name;
-        [cell.imageView sd_setImageWithURL:[NSURL URLWithString:school.logo]];
+        [cell configure:school.logo name:school.name];
 
     }else{
         InstrumentModel *instrument = [self.datas objectAtIndex:indexPath.section];
-
-        if(!instrument.isPublic &&![instrument.schoolId isEqualToString:[UserModel sharedLoginUser].uid]){
-            cell.textLabel.text = instrument.name;
-            cell.textLabel.textColor = [UIColor darkGrayColor];
-        }else{
-            cell.textLabel.text = instrument.name;
-            NSString *text = [NSString stringWithFormat:@"%@%@", [NSString iconStringForEnum:FUIEye], instrument.name];
-            cell.textLabel.font = [UIFont iconFontWithSize:17.0];
-            cell.textLabel.text = text;
-            cell.textLabel.textColor = [UIColor peterRiverColor];
-        }
-
+        [cell configure:nil name:instrument.name];
+        
     }
     
     return cell;

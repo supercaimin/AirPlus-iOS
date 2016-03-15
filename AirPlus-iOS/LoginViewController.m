@@ -13,6 +13,8 @@
 #import "ModelConst.h"
 
 #import "Utility.h"
+#import <AVOSCloud/AVOSCloud.h>
+
 
 @interface LoginViewController ()
 
@@ -113,6 +115,12 @@
             self.navigationController.view.alpha = 0.0;
         } completion:^(BOOL finished) {
             [self.navigationController.view removeFromSuperview];
+        }];
+        
+        [UserModel setInstallationId:[UserModel sharedLoginUser].uid installationId:[AVInstallation currentInstallation].objectId success:^(UserModel *user) {
+        
+        } failure:^(NSError *err) {
+            
         }];
     } failure:^(NSError *err) {
         [Utility showMessage:@"Login Failed."];

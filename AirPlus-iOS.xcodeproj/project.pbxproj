@@ -66,6 +66,8 @@
 		63B8D6471C4BDC31005B5AF6 /* PM25ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63B8D6461C4BDC31005B5AF6 /* PM25ViewController.m */; };
 		63B8D6491C4BE105005B5AF6 /* PM25ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63B8D6481C4BE105005B5AF6 /* PM25ViewController.xib */; };
 		63CEB2731C4D2EC600537B14 /* PMDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 63CEB2721C4D2EC600537B14 /* PMDetailsView.m */; };
+		63E265511C984EDF00E5E10A /* SelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E2654F1C984EDF00E5E10A /* SelectCell.m */; };
+		63E265521C984EDF00E5E10A /* SelectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63E265501C984EDF00E5E10A /* SelectCell.xib */; };
 		63F689CA1C5A184E00F9F755 /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 63F689C91C5A184E00F9F755 /* Utility.m */; };
 /* End PBXBuildFile section */
 
@@ -158,6 +160,9 @@
 		63B8D6481C4BE105005B5AF6 /* PM25ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PM25ViewController.xib; sourceTree = "<group>"; };
 		63CEB2711C4D2EC600537B14 /* PMDetailsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMDetailsView.h; sourceTree = "<group>"; };
 		63CEB2721C4D2EC600537B14 /* PMDetailsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMDetailsView.m; sourceTree = "<group>"; };
+		63E2654E1C984EDF00E5E10A /* SelectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectCell.h; sourceTree = "<group>"; };
+		63E2654F1C984EDF00E5E10A /* SelectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectCell.m; sourceTree = "<group>"; };
+		63E265501C984EDF00E5E10A /* SelectCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectCell.xib; sourceTree = "<group>"; };
 		63F689C81C5A184E00F9F755 /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
 		63F689C91C5A184E00F9F755 /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
 		71438D44AB4C6C86CFED6D85 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -358,6 +363,9 @@
 				63CEB2711C4D2EC600537B14 /* PMDetailsView.h */,
 				63CEB2721C4D2EC600537B14 /* PMDetailsView.m */,
 				637768671C58AB6B00E39B91 /* PMDetailsView.xib */,
+				63E2654E1C984EDF00E5E10A /* SelectCell.h */,
+				63E2654F1C984EDF00E5E10A /* SelectCell.m */,
+				63E265501C984EDF00E5E10A /* SelectCell.xib */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -467,6 +475,7 @@
 				630470931C48B1120064D81C /* tutorial_background_03@2x.jpg in Resources */,
 				630470731C489D1C0064D81C /* Default.png in Resources */,
 				630470761C489D1C0064D81C /* gear@2x.png in Resources */,
+				63E265521C984EDF00E5E10A /* SelectCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -550,6 +559,7 @@
 				63B8D63D1C4BB43A005B5AF6 /* README.md in Sources */,
 				63B8D63E1C4BB43A005B5AF6 /* RNFrostedSidebar.m in Sources */,
 				6304704A1C4881690064D81C /* main.m in Sources */,
+				63E265511C984EDF00E5E10A /* SelectCell.m in Sources */,
 				6377686B1C58C90600E39B91 /* ModelBase.m in Sources */,
 				63B8D6351C4BA1AC005B5AF6 /* AboutViewController.m in Sources */,
 				630470821C489ED50064D81C /* UIImage+RCImage.m in Sources */,
@@ -644,14 +654,14 @@
 			baseConfigurationReference = 92E6B2C2D7DBEBEF485BBEC3 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Han Wang (2ZXC549AVQ)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "AirPlus-iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cn.homecaught.AirPlus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "5bb52358-df9b-4c1d-ab51-61e45f9464f8";
 			};
 			name = Debug;
 		};
@@ -660,14 +670,14 @@
 			baseConfigurationReference = 43ACB4255EB7601F86FAAF56 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Han Wang (2ZXC549AVQ)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "AirPlus-iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cn.homecaught.AirPlus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "5bb52358-df9b-4c1d-ab51-61e45f9464f8";
 			};
 			name = Release;
 		};

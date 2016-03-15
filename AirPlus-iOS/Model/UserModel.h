@@ -38,6 +38,11 @@ typedef NS_ENUM(NSInteger, UserModelType){
         success:(void (^)(UserModel *user))success
         failure:(void (^)(NSError* err))failure;
 
++ (void) setInstallationId:(NSString *)userId
+            installationId:(NSString *)installationId
+                   success:(void (^)(UserModel *user))success
+                   failure:(void (^)(NSError* err))failure;
+
 + (UserModel *) sharedLoginUser;
 
 - (BOOL) isLangEn;

@@ -60,6 +60,19 @@ static UserModel *sharedLoginUser = nil;
     }];
 }
 
++ (void) setInstallationId:(NSString *)userId
+      installationId:(NSString *)installationId
+       success:(void (^)(UserModel *user))success
+       failure:(void (^)(NSError* err))failure
+{
+    NSDictionary *params = @{@"user_id": userId, @"installation_id":installationId};
+    [UserModel requestWithMethod:RequestMethodTypePost url:@"set_installation_id" params:params success:^(AFHttpResult *response) {
+        
+    } failure:^(NSError *err) {
+        failure(err);
+    }];
+}
+
 + (void) register:(NSString *)email
             password:(NSString *)password
             schoolId:(NSString *)schoolId

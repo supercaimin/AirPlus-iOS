@@ -111,7 +111,6 @@
     AVInstallation *currentInstallation = [AVInstallation currentInstallation];
     [currentInstallation setDeviceTokenFromData:deviceToken];
     [currentInstallation saveInBackground];
-    NSString *installationId = currentInstallation.installationId;
 }
 
 @end

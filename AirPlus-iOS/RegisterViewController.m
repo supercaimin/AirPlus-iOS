@@ -13,6 +13,8 @@
 #import "ModelConst.h"
 
 #import "Utility.h"
+#import <AVOSCloud/AVOSCloud.h>
+
 
 @interface RegisterViewController ()
 
@@ -116,6 +118,12 @@
             
             [Utility showMessage:@"Thank you for sign up with AirPlus."];
 
+        }];
+        
+        [UserModel setInstallationId:[UserModel sharedLoginUser].uid installationId:[AVInstallation currentInstallation].objectId success:^(UserModel *user) {
+            
+        } failure:^(NSError *err) {
+            
         }];
     } failure:^(NSError *err) {
         if (err == nil) {
