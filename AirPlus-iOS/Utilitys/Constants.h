@@ -85,7 +85,7 @@
 #define PMWEB_LOGIN     @"http://139.196.40.169:8080/pmweb/login_check"
 #define PMWEB_DATA      @"http://139.196.40.169/api/index/get_pm"
 
-#define OUTDOOR_DATA    @"http://www.pm25.com/city/nanjing.html"
+#define OUTDOOR_DATA    @"http://www.pm25.com/city/"
 
 
 #define IMAGE_URL(path) [NSString stringWithFormat:@"%@%@", BASE_URL, path]
@@ -98,7 +98,7 @@
 #define kWXAPP_ID  @"wxfc6d08159f36df72"
 #define kWXAPP_SECRET   @"04f189702ce2dcf7d1ca913b8902a073"
 
-#define kUserLoginInfo                  @"UserLoginInfo"
+#define kUserLoginInfo                  @"UserLoginInfo_V1.0.3"
 #define kLoginDidFinished                  @"LoginDidFinished"
 #define kRegisterDidFinished                  @"RegisterDidFinished"
 #define kReloadNeed                  @"ReloadNeed"

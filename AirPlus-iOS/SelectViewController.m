@@ -184,6 +184,25 @@ static NSString * const FUITableViewControllerCellReuseIdentifier = @"FUITableVi
     return cell;
 }
 
+- (void)showAlert {
+    FUIAlertView *alertView = [[FUIAlertView alloc] initWithTitle:@"The school is not allowed to access." message:@"Please contact the admin to get the account." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+    alertView.alertViewStyle = FUIAlertViewStyleDefault;
+    alertView.tag = 100;
+    
+    alertView.delegate = nil;
+    alertView.titleLabel.textColor = [UIColor cloudsColor];
+    alertView.titleLabel.font = [UIFont boldFlatFontOfSize:16];
+    alertView.messageLabel.textColor = [UIColor cloudsColor];
+    alertView.messageLabel.font = [UIFont flatFontOfSize:14];
+    alertView.backgroundOverlay.backgroundColor = [[UIColor cloudsColor] colorWithAlphaComponent:0.8];
+    alertView.alertContainer.backgroundColor = [UIColor peterRiverColor];
+    alertView.defaultButtonColor = [UIColor cloudsColor];
+    alertView.defaultButtonShadowColor = [UIColor asbestosColor];
+    alertView.defaultButtonFont = [UIFont boldFlatFontOfSize:16];
+    alertView.defaultButtonTitleColor = [UIColor asbestosColor];
+    [alertView show];
+}
+
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -198,17 +217,37 @@ static NSString * const FUITableViewControllerCellReuseIdentifier = @"FUITableVi
         [self.navigationController pushViewController:sVc animated:YES];
     }else{
         if (self.type == APSelectRegisterType) {
-            
-            RegisterViewController *rVc = [[RegisterViewController alloc] init];
-            rVc.school =  [self.datas objectAtIndex:indexPath.section];
-            [self.navigationController pushViewController:rVc animated:YES];
+            SchoolModel *school = [self.datas objectAtIndex:indexPath.section];
+            if ([school.isOpen isEqualToString:@"1"]) {
+                RegisterViewController *rVc = [[RegisterViewController alloc] init];
+                rVc.school =  [self.datas objectAtIndex:indexPath.section];
+                [self.navigationController pushViewController:rVc animated:YES];
+            }else{
+                [self showAlert];
+            }
         }else{
             if (self.level == APSelectSchoolLevel) {
-                SelectViewController *sVc = [[SelectViewController alloc] init];
-                sVc.level = APSelectLocationLevel;
-                sVc.type = self.type;
-                sVc.selectedObject = [self.datas objectAtIndex:indexPath.section];
-                [self.navigationController pushViewController:sVc animated:YES];
+                SchoolModel *school = [self.datas objectAtIndex:indexPath.section];
+                
+                if ([school.isOpen isEqualToString:@"1"]) {
+                    SelectViewController *sVc = [[SelectViewController alloc] init];
+                    sVc.level = APSelectLocationLevel;
+                    sVc.type = self.type;
+                    sVc.selectedObject = school;
+                    [self.navigationController pushViewController:sVc animated:YES];
+                }else{
+                    if ([[UserModel sharedLoginUser].schoolId isEqualToString:school.uid]) {
+                        SelectViewController *sVc = [[SelectViewController alloc] init];
+                        sVc.level = APSelectLocationLevel;
+                        sVc.type = self.type;
+                        sVc.selectedObject = school;
+                        [self.navigationController pushViewController:sVc animated:YES];
+                    }else{
+                        [self showAlert];
+
+                    }
+                    
+                }
             }else if(self.level == APSelectLocationLevel){
                 InstrumentModel *instrument = [self.datas objectAtIndex:indexPath.section];
                 

@@ -18,6 +18,7 @@
         self.uid = [jsonDict objectForKey:@"id"];
         self.logo = [jsonDict objectForKey:@"logo"];
         self.photos = [jsonDict objectForKey:@"images"];
+        self.isOpen = [jsonDict objectForKey:@"is_open"];
     }
     
     

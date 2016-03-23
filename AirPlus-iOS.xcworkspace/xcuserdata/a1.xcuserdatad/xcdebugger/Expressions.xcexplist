@@ -55,7 +55,12 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "__58+[ModelBase requestWithMethod:url:params:success:failure:]_block_invoke61:ModelBase.m">
+         contextName = "-[PM25ViewController animatedImagesView:imageAtIndex:]:PM25ViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.school.photos">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "-[MainViewController tableView:cellForRowAtIndexPath:]:MainViewController.m">
@@ -64,6 +69,9 @@
                value = "self.pms">
             </PersistentString>
          </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "__58+[ModelBase requestWithMethod:url:params:success:failure:]_block_invoke61:ModelBase.m">
       </ContextState>
       <ContextState
          contextName = "-[MainViewController reload]:MainViewController.m">

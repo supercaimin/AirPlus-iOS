@@ -54,7 +54,8 @@
 + (void) syncdata:(void (^)(AFHttpResult *response))success
           failure:(void (^)(NSError* err, NSString *responseString))failure;
 
-+ (void) getOutdoorData:(void (^)(AFHttpResult *response))success
++ (void) getOutdoorData:(NSString *)cityKey
+                success:(void (^)(AFHttpResult *response))success
                 failure:(void (^)(NSError* err, NSString *responseString))failure;
 
 - (void) start;

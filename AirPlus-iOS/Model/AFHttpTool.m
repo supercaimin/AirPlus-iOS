@@ -228,11 +228,13 @@ static AFHttpTool *pmDataSyncMananger  = nil;
     //#define ContentType @"application/json"
 }
 
-+ (void) getOutdoorData:(void (^)(AFHttpResult *response))success
-                failure:(void (^)(NSError* err, NSString *responseString))failure
++ (void) getOutdoorData:(NSString *)cityKey
+                success:(void (^)(AFHttpResult *response))success
+                failure:(void (^)(NSError* err, NSString *responseString))failure;
 {
+    NSString *url = [NSString stringWithFormat:@"%@%@.html", OUTDOOR_DATA, cityKey];
     [AFHttpTool requestWithMethod:RequestMethodTypeGet
-                              url:OUTDOOR_DATA params:nil
+                              url:url params:nil
                           success:success
                           failure:failure
                       contentType:@"text/html"];

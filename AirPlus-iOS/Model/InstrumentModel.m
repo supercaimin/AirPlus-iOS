@@ -19,6 +19,8 @@
         self.schoolName = [jsonDict objectForKey:@"school_name"];
         self.uid = [jsonDict objectForKey:@"id"];
         self.serial = [jsonDict objectForKey:@"serial"];
+        self.cityKey = [jsonDict objectForKey:@"city_key"];
+
         self.isPublic = [[jsonDict objectForKey:@"is_public"] boolValue];
     }
     

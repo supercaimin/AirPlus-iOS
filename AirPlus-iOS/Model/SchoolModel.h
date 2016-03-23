@@ -15,6 +15,7 @@
 @property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) NSString *cityId;
 @property (strong, nonatomic) NSString *logo;
+@property (strong, nonatomic) NSString *isOpen;
 
 @property (strong, nonatomic) NSArray *photos;
 

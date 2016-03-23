@@ -17,6 +17,8 @@
 @property (strong, nonatomic) NSString *schoolId;
 @property (strong, nonatomic) NSString *schoolName;
 @property (strong, nonatomic) NSString *serial;
+@property (strong, nonatomic) NSString *cityKey;
+
 @property (assign, nonatomic) BOOL isPublic;
 
 @property (strong, nonatomic) NSDictionary *pm;

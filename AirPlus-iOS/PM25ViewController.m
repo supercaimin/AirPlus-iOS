@@ -78,9 +78,8 @@
     [self.scrollView addSubview:self.pmContentView];
     
     self.pms = [[AFHttpTool pmDataSyncMananger] getpmdatasWithSerial:self.instrument.serial];
-    
-    [AFHttpTool getOutdoorData:^(AFHttpResult *response) {
-
+    [AFHttpTool getOutdoorData:self.instrument.cityKey success:^(AFHttpResult *response) {
+        
     } failure:^(NSError *err, NSString *responseString) {
         int count = 0;
         for (int i = 0; i < responseString.length; i++) {
@@ -100,7 +99,7 @@
                     
                     NSString *pm25Str = [responseString substringWithRange:NSMakeRange(i+ 6, j - i - 6)];
                     self.outPM25s = [pm25Str componentsSeparatedByString:@","];
-
+                    
                     
                     break;
                 }
@@ -108,7 +107,6 @@
             
         }
         [self.pmContentView loadWithData:self.pms outPM25s:self.outPM25s];
-
     }];
     self.animatedImagesView.dataSource = self;
 
@@ -203,7 +201,9 @@
     if (!self.school) {
         return [[UIImage alloc] init];
     }
-    NSURL *url = [NSURL URLWithString:[self.school.photos objectAtIndex:index]];
+    NSString *filePath=[[self.school.photos objectAtIndex:index] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+
+    NSURL *url = [NSURL URLWithString:filePath];
     
     UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:url]];
     
